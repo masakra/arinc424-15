@@ -32,9 +32,12 @@
 #ifndef ARINC_H
 #define ARINC_H
 
-#include <QLatin1String>
+#include <Geo>
 
 class ArincObjectInterface;
+
+using namespace std;
+using namespace geo;
 
 class Arinc
 {
@@ -51,6 +54,7 @@ class Arinc
 		 * \brief Подсекции ARINC
 		 */
 		enum Subsection {
+			AS,		///< минимальная безопасная высота полёта вне маршрута (MORA)
 			// раздел D. Навигационные средства
 			D,		///< навигационные средства ОВЧ
 			DB,		///< навигационные средства ОПРС
@@ -84,7 +88,6 @@ class Arinc
 			// раздел T. Таблицы
 			TC,		///< таблицы крейсерских эшелонов
 			TG,		///< таблица географических координат
-			AS,		///< минимальная безопасная высота полёта вне маршрута (MORA)
 			HA,		///< вертодромы
 			HV,		///< средство связи вертодрома
 			ET,		///< предпочтительные маршруты
@@ -96,9 +99,13 @@ class Arinc
 		\\	static
 		*/
 
-		const ArincObjectInterface & operator[]( Subsection ss ) const;
+		static const char * subsectionName( Subsection ss );
 
-		ArincObjectInterface & operator[]( Subsection ss );
+		static const char * subsectionAbbr( Subsection ss );
+
+		static double str_to_lon( const string & str );
+
+		static double str_to_lat( const string & str );
 };
 
 #endif

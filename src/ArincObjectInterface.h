@@ -36,21 +36,34 @@
 
 #include "Arinc.h"
 
+#include <Geo>
+
 using namespace std;
 
 class ArincObjectInterface
 {
 	public:
+		virtual ~ArincObjectInterface() {};
 
 		virtual Arinc::Subsection subsection() const = 0;
 
-		virtual string zone() const = 0;
+		virtual string airportIcao() const = 0;
+
+		virtual Coordinates coordinates() const = 0;
+
+		virtual Coordinates coordinatesDme() const = 0;
 
 		virtual string cycle() const = 0;
+
+		virtual string frequency() const = 0;
 
 		virtual string ident() const = 0;
 
 		virtual string name() const = 0;
+
+		virtual string navClass() const = 0;
+
+		virtual string zone() const = 0;
 };
 
 #endif

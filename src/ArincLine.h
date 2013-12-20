@@ -35,9 +35,22 @@
 
 #include "ArincObjectInterface.h"
 
+class ArincLineD;
 
 class ArincLine : public string, public ArincObjectInterface
 {
+	private:
+
+		// stubs
+
+		void stub( const char * fn_name ) const;
+
+	//protected:		TODO вернуть в protected
+	public:
+		static Latitude latitude( const string & str );
+
+		static Longitude longitude( const string & str );
+
 	public:
 		ArincLine( const string & line );
 
@@ -47,14 +60,35 @@ class ArincLine : public string, public ArincObjectInterface
 			Undefined
 		};
 
-		Type type() const;
+		//Type type() const;
 
 		Arinc::Subsection subsection() const;
 
-		string zone() const;
+		string airportIcao() const;
+
+		Coordinates coordinates() const;
+
+		Coordinates coordinatesDme() const;
 
 		string cycle() const;
+
+		string frequency() const;
+
+		string navClass() const;
+
+		string zone() const;
+
+		/*
+		\\	static
+		*/
+
+		static Type type( const string & str );
+
+		static Arinc::Subsection subsection( const string & str );
+
+		static ArincLine * line( const string & str );
 };
+
 
 #endif
 
