@@ -44,25 +44,12 @@ class ArincLine : public std::string, public ArincObjectInterface
 		static ArincLineMaps m_maps;
 
 
-
-	public:
-		enum Type {
-			VolumeHeader,
-			Header1,
-			Header2,
-			EndOfFile,
-			EndOfVolume,
-			Standard,
-			Tailored,
-			Undefined
-		};
-
 	public:
 		ArincLine();
 
 		ArincLine( const std::string & line );
 
-		Type type() const;
+		int type() const;
 
 		Arinc::Subsection subsection() const;
 
@@ -76,8 +63,9 @@ class ArincLine : public std::string, public ArincObjectInterface
 		Coordinates data( Arinc::DataCoordinates data ) const;
 		*/
 
-		ArincData data( Arinc::DataType dataType );
+		ArincData data( Arinc::DataType dataType ) const;
 
+		const ArincLineMap & map() const;
 
 		/*
 		\\	static
@@ -85,13 +73,9 @@ class ArincLine : public std::string, public ArincObjectInterface
 
 		//static ArincLine * line( const std::string & str );
 
-		static Type type( const std::string & str );
+		static int type( const std::string & str );
 
 		static Arinc::Subsection subsection( const std::string & str );
-
-		static Latitude latitude( const std::string & str );
-
-		static Longitude longitude( const std::string & str );
 
 		static double decodeMagDev( const std::string & str );
 };

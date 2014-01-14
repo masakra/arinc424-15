@@ -38,7 +38,7 @@
 class ArincObjectInterface
 {
 	public:
-		virtual ArincData data( Arinc::DataType dataType ) = 0;
+		virtual ArincData data( Arinc::DataType dataType ) const = 0;
 };
 
 #endif

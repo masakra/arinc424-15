@@ -45,52 +45,56 @@ ArincLine::ArincLine( const std::string & line )
 }
 
 ArincData
-ArincLine::data( Arinc::DataType dataType )
+ArincLine::data( Arinc::DataType dataType ) const
 {
-	std::string str = getInterval( dataType );
-
 	return ArincData( getInterval( dataType ) );
 }
 
-ArincLine::Type
+const ArincLineMap &
+ArincLine::map() const
+{
+	return m_maps[ subsection() ];
+}
+
+int
 ArincLine::type() const
 {
 	if ( size() >= 3 )
 		return type( *this );
 
-	return Undefined;
+	return Arinc::Unknown;
 }
 
-ArincLine::Type
+int
 ArincLine::type( const std::string & str ) // static
 {
 	switch ( str.at( 0 ) ) {
 		case 'S':
-			return Standard;
+			return Arinc::Standard;
 
 		case 'T':
-			return Tailored;
+			return Arinc::Tailored;
 
 		default: {
 			const std::string type = str.substr( 0, 3 );
 
 			if ( type == "VOL" )
-				return VolumeHeader;
+				return Arinc::VolumeHeader;
 
 			else if ( type == "HDR1" )
-				return Header1;
+				return Arinc::Header1;
 
 			else if ( type == "HDR2" )
-				return Header2;
+				return Arinc::Header2;
 
 			else if ( type == "EOF" )
-				return EndOfFile;
+				return Arinc::EndOfFile;
 
 			else if ( type == "EOV" )
-				return EndOfVolume;
+				return Arinc::EndOfVolume;
 
 			else
-				return Undefined;
+				return Arinc::Unknown;
 		}
 	}
 }
@@ -224,6 +228,8 @@ ArincLine::getInterval( Arinc::DataType dataType ) const
 
 	std::string str;
 
+	//printf("param = %i, start1 = %i, length1 = %i\n", dataType, interval.start1(), interval.length1() );
+
 	if ( interval.haveFirstPart() )
 		str = substr( interval.start1(), interval.length1() );
 
@@ -245,55 +251,6 @@ Arinc::Subsection
 ArincLine::subsection() const
 {
 	return subsection( *this );
-}
-
-Latitude
-ArincLine::latitude( const std::string & str )	// static
-{
-	// проверка строки str на валидность
-
-	if ( str.size() != 9 ) {
-		printf("ERROR !!! arinc latitude string to Longitude convertion, size mismatch, %lu != 9.\n", str.size() );
-		return Latitude();
-	}
-
-	const char semisphere = str.at( 0 );
-
-	if ( semisphere != geo::North && semisphere != geo::South ) {
-		printf("ERROR !!! arinc latitude string starts with \"%c\" nor \"N\" and \"S\".\n", semisphere );
-		return Latitude();
-	}
-
-	// непосредственно преобразования
-
-	const double g = Coordinate::gmsc2g( str.substr( 1, 2 ), str.substr( 3, 2 ), str.substr( 5, 2 ), str.substr( 7, 2 ) );
-
-	return Latitude( semisphere == geo::North ? g : -g );
-}
-
-Longitude
-ArincLine::longitude( const std::string & str )	// static
-{
-	// проверка строки str на валидность
-
-	if ( str.size() != 10 ) {
-		printf("ERROR !!! arinc longitude string to Longitude convertion, size mismatch, %lu != 10.\n", str.size() );
-		return Longitude();
-	}
-
-	const char semisphere = str.at( 0 );
-
-	if ( semisphere != geo::East && semisphere != geo::West ) {
-		printf("ERROR !!! arinc longitude string starts with \"%c\" nor \"E\" and \"W\".\n", semisphere );
-		return Longitude();
-	}
-
-	// непосредственно преобразования
-
-	const double g = Coordinate::gmsc2g( str.substr( 1, 3 ), str.substr( 4, 2 ),
-			str.substr( 6, 2 ), str.substr( 8, 2 ) );
-
-	return Longitude( semisphere == geo::East ? g : -g );
 }
 
 /*

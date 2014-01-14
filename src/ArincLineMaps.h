@@ -33,6 +33,7 @@
 #define ARINCLINEMAPS_H
 
 #include "Arinc.h"
+//#include "ArincLine.h"
 #include "ArincLineMap.h"
 
 class ArincLineMaps
@@ -42,7 +43,7 @@ class ArincLineMaps
 	private:
 		ArincLineMaps();	// ибо нефиг
 
-		ArincLineMap m_maps[ Arinc::EO ];
+		ArincLineMap m_maps[ Arinc::Tailored ];	// last item of Arinc::Subsection
 
 	public:
 		ArincLineMap & operator[]( Arinc::Subsection ss );

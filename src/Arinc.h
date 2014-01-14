@@ -93,23 +93,36 @@ class Arinc
 			HV,		///< средство связи вертодрома
 			ET,		///< предпочтительные маршруты
 			EO,		///< препятствия на маршруте
+			////////////////////////////////////////////////////
+			/// служебные строки файла в формате Arinc424-15 ///
+			////////////////////////////////////////////////////
+			VolumeHeader,
+			Header1,
+			Header2,
+			EndOfFile,
+			EndOfVolume,
+			Standard,
+			Tailored
 		};
-
 
 		enum DataType {
 			Undefined = 0,
 			Airport,		///< Код ICAO аэропорта с 2-х символьным кодом зоны
+			Bias,
 			Cycle,			///< Цикл AIRAC в котором были последние изменения
-			Zone,			///< 3-x символьное обозначение зоны
-			Ident,			///< Идентификатор с 2-х символьным кодом зоны
+			Coordinates,
+			Datum,
+			Dme,
+			DmeCoordinates,
+			FreqPrd,
 			Frequency,		///< Частота
+			Exceed,			///< Превышение
+			Ident,			///< Идентификатор с 2-х символьным кодом зоны
+			MagDev,			///< Магнитное склонение
 			Name,			///< Наименование
 			NavClass,
-			Dme,
 			Sens,
-			Datum,
-			Coordinates,
-			DmeCoordinates,
+			Zone,			///< 3-x символьное обозначение зоны
 			// Volume Header
 			Encoding,		///< Кодировка
 			ParityCheck,	///< Контроль чётности
@@ -121,23 +134,6 @@ class Arinc
 		};
 
 		/*
-		enum DataInt {
-			Bias = Datum + 1,
-			Exceed,				///< Превышение
-			FreqPrd				///< Расстояние защиты частоты, в NM (Frequency Protection Distance, 5.150)
-		};
-
-		enum DataDouble {
-			MagDev = FreqPrd + 1		///< Магнитное склонение
-		};
-
-		enum DataCoordinates {
-			Coordinates = MagDev + 1,	///< Координаты
-			DmeCoordinates				///< Координаты DME
-		};
-		*/
-
-		/*
 		\\	static
 		*/
 
@@ -145,7 +141,7 @@ class Arinc
 
 		static const char * subsectionAbbr( Subsection ss );
 
-		static const char * dataName( int data );
+		static const char * dataName( DataType dataType );
 };
 
 #endif

@@ -31,6 +31,8 @@
 #ifndef ARINCDATA_H
 #define ARINCDATA_H
 
+#define STR_BUF_SIZE 16	///< \sa toStdString() const
+
 #include "Arinc.h"
 #include <Geo>
 
@@ -78,9 +80,23 @@ class ArincData
 
 		ArincData & operator=( const std::string & str );
 
-		//
+		// получатели значений
 
 		std::string toStdString() const;
+
+		Coordinates toCoordinates() const;
+
+		/*
+		\\	static
+		*/
+
+		static Latitude latitude( const std::string & str );
+
+		static Longitude longitude( const std::string & str );
+
+		static Coordinates coordinates( const std::string & coords_str );
+
+		static Coordinates coordinates( const std::string & lon_str, const std::string & lat_str );
 };
 
 #endif

@@ -18,7 +18,7 @@ main( int , char ** )
 
 	std::cout << line.data( Arinc::Name ).toStdString() << std::endl;
 	std::cout << line.data( Arinc::Ident ).toStdString() << std::endl;
-	std::cout << line.data( Arinc::Coordinates ).toStdString() << std::endl;
+	std::cout << line.data( Arinc::Coordinates ).toCoordinates().strShort() << std::endl;
 	//std::cout << ( static_cast< std::string >( line.data( Arinc::Ident ) ) ).c_str() << std::endl;
 
 //	Coordinates c = object->coordinatesDme();

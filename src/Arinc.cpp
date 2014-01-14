@@ -65,7 +65,10 @@ Arinc::subsectionName( Subsection ss ) // static
 		"Ограниченное ВД"
 	};
 
-	return names[ ss - Unknown ];
+	if ( ss > EO )
+		return 0;
+	else
+		return names[ ss - Unknown ];
 }
 
 const char *
@@ -107,11 +110,14 @@ Arinc::subsectionAbbr( Subsection ss )
 		"EO"
 	};
 
-	return abbr[ ss - Unknown ];
+	if ( ss > EO )
+		return 0;
+	else
+		return abbr[ ss - Unknown ];
 }
 
 const char *
-Arinc::dataName( int data )
+Arinc::dataName( DataType dataType )
 {
 	static const char * names[] = {
 		"airport",
@@ -132,6 +138,6 @@ Arinc::dataName( int data )
 		"dmecoordinates"
 	};
 
-	return names[ data ];
+	return names[ dataType ];
 }
 

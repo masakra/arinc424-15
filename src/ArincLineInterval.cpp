@@ -27,7 +27,7 @@
 #include "ArincLineInterval.h"
 
 ArincLineInterval::ArincLineInterval()
-	: std::vector< char >()
+	: std::vector< unsigned char >()
 {
 }
 
@@ -38,7 +38,7 @@ ArincLineInterval::isValid() const
 }
 
 void
-ArincLineInterval::interval( char st1, char le1 )
+ArincLineInterval::interval( unsigned char st1, unsigned char le1 )
 {
 	clear();
 
@@ -47,7 +47,7 @@ ArincLineInterval::interval( char st1, char le1 )
 }
 
 void
-ArincLineInterval::interval( char st1, char le1, char st2, char le2 )
+ArincLineInterval::interval( unsigned char st1, unsigned char le1, unsigned char st2, unsigned char le2 )
 {
 	interval( st1, le1 );
 

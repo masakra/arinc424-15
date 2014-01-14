@@ -39,13 +39,13 @@ ArincLineMaps::ArincLineMaps()
 	m_maps[ Arinc::D ][ Arinc::Datum ].interval( 84 );
 	m_maps[ Arinc::D ][ Arinc::Name ].interval( 93, 30 );
 	m_maps[ Arinc::D ][ Arinc::Coordinates ].interval( 32, 19 );
-	/*
 	m_maps[ Arinc::D ][ Arinc::Exceed ].interval( 79, 5 );
 	m_maps[ Arinc::D ][ Arinc::Bias ].interval( 85, 2 );
 	m_maps[ Arinc::D ][ Arinc::FreqPrd ].interval( 87, 3 );
 	m_maps[ Arinc::D ][ Arinc::DmeCoordinates ].interval( 55, 19 );
 	m_maps[ Arinc::D ][ Arinc::MagDev ].interval( 74, 5 );
 	//DB
+	/*
 	m_maps[ Arinc::DB ][ Arinc::Coordinates ].interval( 32, 19 );
 
 	// Volume Header

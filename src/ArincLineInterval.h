@@ -36,14 +36,14 @@
 
 #include <vector>
 
-class ArincLineInterval : public std::vector< char >
+class ArincLineInterval : public std::vector< unsigned char >
 {
 	public:
 		ArincLineInterval();
 
-		void interval( char st1, char le1 = 1 );
+		void interval( unsigned char st1, unsigned char le1 = 1 );
 
-		void interval( char st1, char le1, char st2, char le2 );
+		void interval( unsigned char st1, unsigned char le1, unsigned char st2, unsigned char le2 );
 
 		bool isValid() const;
 

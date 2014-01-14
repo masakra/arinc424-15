@@ -125,15 +125,19 @@ ArincData::operator=( const std::string & str )
 std::string
 ArincData::toStdString() const
 {
+	char buf[ STR_BUF_SIZE ];
+
 	switch ( m_type ) {
 		case Int:
-			break;
+			snprintf( buf, STR_BUF_SIZE, "%i", m_int );
+			return buf;
 
 		case Double:
-			break;
+			snprintf( buf, STR_BUF_SIZE, "%64.4f", m_double );
+			return buf;
 
 		case String:
-			return std::string( *m_string );
+			return *m_string;
 
 		case Coords:
 			return m_coordinates->strShort();
@@ -143,5 +147,85 @@ ArincData::toStdString() const
 	}
 
 	return std::string();
+}
+
+Coordinates
+ArincData::toCoordinates() const
+{
+	switch ( m_type ) {
+		case Coords:
+			return *m_coordinates;
+
+		case String: {
+			if ( m_string->size() == 19 )
+				return coordinates( *m_string );
+		}
+
+		default:
+			;
+	}
+
+	return Coordinates();
+}
+
+Latitude
+ArincData::latitude( const std::string & str )	// static
+{
+	// проверка строки str на валидность
+
+	if ( str.size() != 9 ) {
+		printf("ERROR !!! arinc latitude string to Longitude convertion, size mismatch, %lu != 9.\n", str.size() );
+		return Latitude();
+	}
+
+	const char semisphere = str.at( 0 );
+
+	if ( semisphere != geo::North && semisphere != geo::South ) {
+		printf("ERROR !!! arinc latitude string starts with \"%c\" nor \"N\" and \"S\".\n", semisphere );
+		return Latitude();
+	}
+
+	// непосредственно преобразования
+
+	const double g = Coordinate::gmsc2g( str.substr( 1, 2 ), str.substr( 3, 2 ), str.substr( 5, 2 ), str.substr( 7, 2 ) );
+
+	return Latitude( semisphere == geo::North ? g : -g );
+}
+
+Longitude
+ArincData::longitude( const std::string & str )	// static
+{
+	// проверка строки str на валидность
+
+	if ( str.size() != 10 ) {
+		printf("ERROR !!! arinc longitude string to Longitude convertion, size mismatch, %lu != 10.\n", str.size() );
+		return Longitude();
+	}
+
+	const char semisphere = str.at( 0 );
+
+	if ( semisphere != geo::East && semisphere != geo::West ) {
+		printf("ERROR !!! arinc longitude string starts with \"%c\" nor \"E\" and \"W\".\n", semisphere );
+		return Longitude();
+	}
+
+	// непосредственно преобразования
+
+	const double g = Coordinate::gmsc2g( str.substr( 1, 3 ), str.substr( 4, 2 ),
+			str.substr( 6, 2 ), str.substr( 8, 2 ) );
+
+	return Longitude( semisphere == geo::East ? g : -g );
+}
+
+Coordinates
+ArincData::coordinates( const std::string & coords_str )	 // static
+{
+	return Coordinates( longitude( coords_str.substr( 9, 10 ) ), latitude( coords_str.substr( 0, 9 ) ) );
+}
+
+Coordinates
+ArincData::coordinates( const std::string & lon_str, const std::string & lat_str )	 // static
+{
+	return Coordinates( longitude( lon_str ), latitude( lat_str ) );
 }
 
