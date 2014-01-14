@@ -27,26 +27,42 @@
 #include "ArincLine.h"
 
 #include <iostream>
+#include <math.h>
 
-#include "ArincLineD.h"
-#include "ArincLineDb.h"
+#include "ArincLineInterval.h"
 
 #include <Geo>
 
-ArincLine::ArincLine( const string & line )
-	: string( line )
+ArincLineMaps ArincLine::m_maps;
+
+ArincLine::ArincLine()
 {
 }
 
-void
-ArincLine::stub( const char * fn_name ) const
+ArincLine::ArincLine( const std::string & line )
+	: std::string( line )
 {
-	printf("WARNING !!! Arinc line \"%s\" don't have field for %s() function.\n",
-			Arinc::subsectionAbbr( subsection() ), fn_name );
+}
+
+ArincData
+ArincLine::data( Arinc::DataType dataType )
+{
+	std::string str = getInterval( dataType );
+
+	return ArincData( getInterval( dataType ) );
 }
 
 ArincLine::Type
-ArincLine::type( const string & str ) // static
+ArincLine::type() const
+{
+	if ( size() >= 3 )
+		return type( *this );
+
+	return Undefined;
+}
+
+ArincLine::Type
+ArincLine::type( const std::string & str ) // static
 {
 	switch ( str.at( 0 ) ) {
 		case 'S':
@@ -55,13 +71,32 @@ ArincLine::type( const string & str ) // static
 		case 'T':
 			return Tailored;
 
-		default:
-			return Undefined;
+		default: {
+			const std::string type = str.substr( 0, 3 );
+
+			if ( type == "VOL" )
+				return VolumeHeader;
+
+			else if ( type == "HDR1" )
+				return Header1;
+
+			else if ( type == "HDR2" )
+				return Header2;
+
+			else if ( type == "EOF" )
+				return EndOfFile;
+
+			else if ( type == "EOV" )
+				return EndOfVolume;
+
+			else
+				return Undefined;
+		}
 	}
 }
 
 Arinc::Subsection
-ArincLine::subsection( const string & str ) // static
+ArincLine::subsection( const std::string & str ) // static
 {
 	switch ( str.at( 4 ) ) {		// section code
 		case 'A':
@@ -177,49 +212,34 @@ ArincLine::subsection( const string & str ) // static
 	}
 }
 
-string
-ArincLine::frequency() const
+std::string
+ArincLine::getInterval( Arinc::DataType dataType ) const
 {
-	stub("frequency");
-	return string();
+	const ArincLineInterval & interval = m_maps[ subsection() ][ dataType ];
+
+	if ( ! interval.isValid() ) {
+		printf("interval is invalid\n");
+		return std::string();
+	}
+
+	std::string str;
+
+	if ( interval.haveFirstPart() )
+		str = substr( interval.start1(), interval.length1() );
+
+	if ( interval.haveSecondPart() )
+		str += substr( interval.start2(), interval.length2() );
+
+	return str;
 }
 
-string
-ArincLine::navClass() const
+/*
+std::string
+ArincLine::data( Arinc::DataString data ) const
 {
-	stub("navClass");
-	return string();
+	return getInterval( data );
 }
-
-string
-ArincLine::zone() const
-{
-	if ( type( *this ) == Standard )
-		return substr( 1, 3 );
-
-	else
-		return string();
-}
-
-Coordinates
-ArincLine::coordinates() const
-{
-	stub("coordinates");
-	return Coordinates();
-}
-
-Coordinates
-ArincLine::coordinatesDme() const
-{
-	stub("coordinatesDme");
-	return Coordinates();
-}
-
-string
-ArincLine::cycle() const
-{
-	return substr( 128, 4 );
-}
+*/
 
 Arinc::Subsection
 ArincLine::subsection() const
@@ -227,30 +247,8 @@ ArincLine::subsection() const
 	return subsection( *this );
 }
 
-ArincLine *
-ArincLine::line( const string & str )	// static
-{
-	switch ( subsection( str ) ) {
-		case Arinc::D:
-			return new ArincLineD( str );
-
-		case Arinc::DB:
-			return new ArincLineDb( str );
-
-		default:
-			return 0;
-	}
-}
-
-string
-ArincLine::airportIcao() const
-{
-	stub("airportIcao");
-	return string();
-}
-
 Latitude
-ArincLine::latitude( const string & str )	// static
+ArincLine::latitude( const std::string & str )	// static
 {
 	// проверка строки str на валидность
 
@@ -261,7 +259,7 @@ ArincLine::latitude( const string & str )	// static
 
 	const char semisphere = str.at( 0 );
 
-	if ( semisphere != North && semisphere != South ) {
+	if ( semisphere != geo::North && semisphere != geo::South ) {
 		printf("ERROR !!! arinc latitude string starts with \"%c\" nor \"N\" and \"S\".\n", semisphere );
 		return Latitude();
 	}
@@ -270,11 +268,11 @@ ArincLine::latitude( const string & str )	// static
 
 	const double g = Coordinate::gmsc2g( str.substr( 1, 2 ), str.substr( 3, 2 ), str.substr( 5, 2 ), str.substr( 7, 2 ) );
 
-	return Latitude( semisphere == North ? g : -g );
+	return Latitude( semisphere == geo::North ? g : -g );
 }
 
 Longitude
-ArincLine::longitude( const string & str )	// static
+ArincLine::longitude( const std::string & str )	// static
 {
 	// проверка строки str на валидность
 
@@ -285,7 +283,7 @@ ArincLine::longitude( const string & str )	// static
 
 	const char semisphere = str.at( 0 );
 
-	if ( semisphere != East && semisphere != West ) {
+	if ( semisphere != geo::East && semisphere != geo::West ) {
 		printf("ERROR !!! arinc longitude string starts with \"%c\" nor \"E\" and \"W\".\n", semisphere );
 		return Longitude();
 	}
@@ -295,6 +293,56 @@ ArincLine::longitude( const string & str )	// static
 	const double g = Coordinate::gmsc2g( str.substr( 1, 3 ), str.substr( 4, 2 ),
 			str.substr( 6, 2 ), str.substr( 8, 2 ) );
 
-	return Longitude( semisphere == East ? g : -g );
+	return Longitude( semisphere == geo::East ? g : -g );
 }
+
+/*
+int
+ArincLine::data( Arinc::DataInt data ) const
+{
+	const std::string str = getInterval( data );
+
+	switch ( data ) {
+		case Arinc::Bias:
+			return round( geo::nm2m( strtol( str.c_str(), 0, 10 ) / 10.0 ) );
+
+		default:
+			return strtol( str.c_str(), 0, 10 );
+	}
+}
+
+double
+ArincLine::data( Arinc::DataDouble data ) const
+{
+	const std::string str = getInterval( data );
+
+	switch ( data ) {
+		case Arinc::MagDev:
+			return decodeMagDev( str );
+
+		default:
+			return strtod( str.c_str(), 0 );
+	}
+}
+
+Coordinates
+ArincLine::data( Arinc::DataCoordinates data ) const
+{
+	const std::string str = getInterval( data );
+
+	if ( str.empty() )
+		return Coordinates();
+	else
+		return Coordinates( longitude( str.substr( 9, 10 ) ), latitude( str.substr( 0, 9 ) ) );
+}
+*/
+
+double
+ArincLine::decodeMagDev( const std::string & str )
+{
+	const double md = strtol( str.substr( 1, 4 ).c_str(), 0, 10 ) / 10.0;
+
+	return str.at( 0 ) == geo::West ? -md : md;
+}
+
 

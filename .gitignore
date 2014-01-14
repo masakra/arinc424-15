@@ -1,0 +1,6 @@
+*.o
+Makefile
+*.pro
+*.pro-e
+*.so
+*.so.*

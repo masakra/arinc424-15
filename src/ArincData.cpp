@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2013 by Sergey N Chursanov                              *
+ *   Copyright (C) 2014 by Sergey N Chursanov                              *
  *                                                                         *
  *   email: masakra@mail.ru                                                *
  *   jabber: masakra@jabber.ru                                             *
@@ -24,53 +24,124 @@
  *   OTHER DEALINGS IN THE SOFTWARE.                                       *
  ***************************************************************************/
 
-#include "ArincLineD.h"
+#include "ArincData.h"
 
-ArincLineD::ArincLineD( const string & line )
-	: ArincLine( line )
+ArincData::ArincData()
+	: m_type( Invalid )
 {
 }
 
-string
-ArincLineD::frequency() const
+ArincData::ArincData( int i )
+	: m_type( Int ), m_int( i )
 {
-	return substr( 22, 5 );
 }
 
-string
-ArincLineD::ident() const
+ArincData::ArincData( double d )
+	: m_type( Double ), m_double( d )
 {
-	return substr( 19, 2 ) + substr( 13, 4 );
 }
 
-string
-ArincLineD::name() const
+ArincData::ArincData( const std::string & str )
+	: m_type( String ), m_string( new std::string( str ) )
 {
-	return substr( 93, 30 );
 }
 
-string
-ArincLineD::navClass() const
+ArincData::ArincData( const Coordinates & coords )
+	: m_type( Coords ), m_coordinates( new Coordinates( coords ) )
 {
-	return substr( 27, 5 );
 }
 
-string
-ArincLineD::airportIcao() const
+ArincData::ArincData( const ArincData & other )		// copy constractor
+	: m_type( other.m_type )
 {
-	return substr( 10, 2 ) + substr( 6, 4 );
+	switch ( m_type ) {
+		case Int:
+			m_int = other.m_int;
+			break;
+
+		case Double:
+			m_double = other.m_double;
+			break;
+
+		case String:
+			if ( m_string != 0 )
+				delete m_string;
+			m_string = other.m_string;
+			break;
+
+		case Coords:
+			if ( m_coordinates != 0 )
+				delete m_coordinates;
+			m_coordinates = other.m_coordinates;
+			break;
+
+		default:
+			;
+	}
 }
 
-Coordinates
-ArincLineD::coordinates() const
+ArincData::~ArincData()
 {
-	return Coordinates( longitude( substr( 41, 10 ) ), latitude( substr( 32, 9 ) ) );
+	clearPointer();
 }
 
-Coordinates
-ArincLineD::coordinatesDme() const
+void
+ArincData::clearPointer()
 {
-	return Coordinates( longitude( substr( 64, 10 ) ), latitude( substr( 55, 9 ) ) );
+	switch ( m_type ) {
+		case String:
+			if ( m_string != 0 )
+				delete m_string;
+			break;
+
+		case Coords:
+			if ( m_coordinates != 0 )
+				delete m_coordinates;
+			break;
+
+		default:
+			;
+	}
+
+	m_string = 0;
 }
 
+void
+ArincData::setString( const std::string & str )
+{
+	clearPointer();
+
+	m_string = new std::string( str );
+}
+
+ArincData &
+ArincData::operator=( const std::string & str )
+{
+	setString( str );
+
+	return *this;
+}
+
+std::string
+ArincData::toStdString() const
+{
+	switch ( m_type ) {
+		case Int:
+			break;
+
+		case Double:
+			break;
+
+		case String:
+			return std::string( *m_string );
+
+		case Coords:
+			return m_coordinates->strShort();
+
+		default:
+			;
+	}
+
+	return std::string();
+}
 

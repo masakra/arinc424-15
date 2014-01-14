@@ -31,6 +31,7 @@ const char *
 Arinc::subsectionName( Subsection ss ) // static
 {
 	static const char * names[] = {
+		"Неизвестно",
 		"Координатная сетка для минимальных высот вне маршрута (MORA)",
 		"Навигационное средство ОВЧ",
 		"Навигационное средство ОПРС"
@@ -61,17 +62,17 @@ Arinc::subsectionName( Subsection ss ) // static
 		"Географические координаты",
 		"Контролируемое ВД",
 		"ФИР/УИР",
-		"Ограниченное ВД",
-		"Неизвестно"
+		"Ограниченное ВД"
 	};
 
-	return names[ ss - AS ];
+	return names[ ss - Unknown ];
 }
 
 const char *
 Arinc::subsectionAbbr( Subsection ss )
 {
 	static const char * abbr[] = {
+		"Unknown",
 		"AS",
 		"D ",
 		"DB",
@@ -103,20 +104,34 @@ Arinc::subsectionAbbr( Subsection ss )
 		"HA",
 		"HV",
 		"ET",
-		"EO",
-		"Unknown",
+		"EO"
 	};
 
-	return abbr[ ss - AS ];
+	return abbr[ ss - Unknown ];
 }
 
-double
-Arinc::str_to_lon( const string & str )
+const char *
+Arinc::dataName( int data )
 {
-}
+	static const char * names[] = {
+		"airport",
+		"cycle",
+		"zone",
+		"ident",
+		"frequency",
+		"name",
+		"navclass",
+		"dme",
+		"sens",
+		"datum",
+		"bias",
+		"exceed",
+		"freqprd",
+		"magdev",
+		"coordinates",
+		"dmecoordinates"
+	};
 
-double
-Arinc::str_to_lat( const string & str )
-{
+	return names[ data ];
 }
 

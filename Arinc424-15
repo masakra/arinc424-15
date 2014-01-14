@@ -1,6 +1,3 @@
 #include "src/Arinc.h"
 #include "src/ArincLine.h"
-#include "src/ArincLineD.h"
-#include "src/ArincLineDb.h"
-#include "src/ArincObject.h"
 #include "src/ArincObjectInterface.h"

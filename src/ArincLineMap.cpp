@@ -24,78 +24,16 @@
  *   OTHER DEALINGS IN THE SOFTWARE.                                       *
  ***************************************************************************/
 
-/*! \class ArincLine
- *
- * \brief Строка ARINC файла
- */
+#include "ArincLineMap.h"
 
-#ifndef ARINCLINE_H
-#define ARINCLINE_H
+#include "ArincLine.h"
 
-#include "ArincData.h"
-#include "ArincObjectInterface.h"
-#include "ArincLineMaps.h"
-
-class ArincLine : public std::string, public ArincObjectInterface
+ArincLineMap::ArincLineMap()
+	: std::map< Arinc::DataType, ArincLineInterval >()
 {
-	private:
-		std::string getInterval( Arinc::DataType dataType ) const;
+	// общие поля для всех подсекций
 
-		static ArincLineMaps m_maps;
-
-
-
-	public:
-		enum Type {
-			VolumeHeader,
-			Header1,
-			Header2,
-			EndOfFile,
-			EndOfVolume,
-			Standard,
-			Tailored,
-			Undefined
-		};
-
-	public:
-		ArincLine();
-
-		ArincLine( const std::string & line );
-
-		Type type() const;
-
-		Arinc::Subsection subsection() const;
-
-		/*
-		std::string data( Arinc::DataString data ) const;
-
-		int data( Arinc::DataInt data ) const;
-
-		double data( Arinc::DataDouble data ) const;
-
-		Coordinates data( Arinc::DataCoordinates data ) const;
-		*/
-
-		ArincData data( Arinc::DataType dataType );
-
-
-		/*
-		\\	static
-		*/
-
-		//static ArincLine * line( const std::string & str );
-
-		static Type type( const std::string & str );
-
-		static Arinc::Subsection subsection( const std::string & str );
-
-		static Latitude latitude( const std::string & str );
-
-		static Longitude longitude( const std::string & str );
-
-		static double decodeMagDev( const std::string & str );
-};
-
-
-#endif
+	( *this )[ Arinc::Cycle ].interval( 128, 4 );
+	( *this )[ Arinc::Zone ].interval( 1, 3 );
+}
 

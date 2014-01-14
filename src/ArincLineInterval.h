@@ -24,26 +24,38 @@
  *   OTHER DEALINGS IN THE SOFTWARE.                                       *
  ***************************************************************************/
 
-/*! \class ArincLineDb
+/*! \class ArincLineInterval
  *
- * \brief 
+ * \brief Интервал для вырезки дынных
+ *
+ * Может быть два интервала. В этом случае результаты вырезок конкатенируются.
  */
 
-#ifndef ARINCLINEDB_H
-#define ARINCLINEDB_H
+#ifndef ARINCLINEINTERVAL_H
+#define ARINCLINEINTERVAL_H
 
-#include "ArincLine.h"
+#include <vector>
 
-using namespace std;
-
-class ArincLineDb : public ArincLine
+class ArincLineInterval : public std::vector< char >
 {
 	public:
-		ArincLineDb( const string & str );
+		ArincLineInterval();
 
-		string ident() const;
+		void interval( char st1, char le1 = 1 );
 
-		string name() const;
+		void interval( char st1, char le1, char st2, char le2 );
+
+		bool isValid() const;
+
+		bool haveFirstPart() const;
+
+		int start1() const;
+		int length1() const;
+
+		bool haveSecondPart() const;
+
+		int start2() const;
+		int length2() const;
 };
 
 #endif

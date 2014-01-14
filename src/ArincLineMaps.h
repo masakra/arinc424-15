@@ -24,20 +24,31 @@
  *   OTHER DEALINGS IN THE SOFTWARE.                                       *
  ***************************************************************************/
 
-#include "ArincLineDb.h"
+/*! \class ArincLineMaps
+ *
+ * \brief 
+ */
 
-ArincLineDb::ArincLineDb( const string & str )
-	: ArincLine( str )
-{
-}
+#ifndef ARINCLINEMAPS_H
+#define ARINCLINEMAPS_H
 
-string
-ArincLineDb::ident() const
-{
-}
+#include "Arinc.h"
+#include "ArincLineMap.h"
 
-string
-ArincLineDb::name() const
+class ArincLineMaps
 {
-}
+	friend class ArincLine;
+
+	private:
+		ArincLineMaps();	// ибо нефиг
+
+		ArincLineMap m_maps[ Arinc::EO ];
+
+	public:
+		ArincLineMap & operator[]( Arinc::Subsection ss );
+
+		const ArincLineMap & operator[]( Arinc::Subsection ss ) const;
+};
+
+#endif
 

@@ -24,34 +24,63 @@
  *   OTHER DEALINGS IN THE SOFTWARE.                                       *
  ***************************************************************************/
 
-/*! \class 
+/*! \class ArincData
  *
- * \brief 
  */
 
-#ifndef ARINCLINED_H
-#define ARINCLINED_H
+#ifndef ARINCDATA_H
+#define ARINCDATA_H
 
-#include "ArincLine.h"
+#include "Arinc.h"
+#include <Geo>
 
-class ArincLineD : public ArincLine
+class ArincData
 {
 	public:
-		ArincLineD( const string & line );
+		enum Type {
+			Invalid,
+			Int,
+			Double,
+			String,
+			Coords
+		};
 
-		string frequency() const;
+	private:
+		Type m_type;
 
-		string ident() const;
+		union {
+			int m_int;
+			double m_double;
+			std::string * m_string;
+			class Coordinates * m_coordinates;
+		};
 
-		Coordinates coordinates() const;
+		void clearPointer();
 
-		Coordinates coordinatesDme() const;
+	public:
+		ArincData();
 
-		string name() const;
+		ArincData( int i );
 
-		string navClass() const;
+		ArincData( double d );
 
-		string airportIcao() const;
+		ArincData( const std::string & str );
+
+		ArincData( const Coordinates & coords );
+
+		ArincData( const ArincData & other );		// copy constructor
+
+		virtual ~ArincData();
+
+		// установщики
+
+		void setString( const std::string & str );
+
+		ArincData & operator=( const std::string & str );
+
+		//
+
+		std::string toStdString() const;
 };
 
 #endif

@@ -24,61 +24,25 @@
  *   OTHER DEALINGS IN THE SOFTWARE.                                       *
  ***************************************************************************/
 
-#include "ArincObject.h"
+/*! \class ArincLineMap
+ *
+ * \brief 
+ */
 
-#include "ArincLine.h"
+#ifndef ARINCLINEMAP_H
+#define ARINCLINEMAP_H
 
-ArincObject::ArincObject()
-	: m_interface( 0 )
+//#include "ArincData.h"
+#include "Arinc.h"
+#include "ArincLineInterval.h"
+#include <map>
+#include <vector>
+
+class ArincLineMap : public std::map< Arinc::DataType, ArincLineInterval >
 {
-}
+	public:
+		ArincLineMap();
+};
 
-ArincObject::ArincObject( ArincObjectInterface * interface )
-	: m_interface( interface )
-{
-}
-
-ArincObject::ArincObject( const string & str )
-	: m_interface( ArincLine::line( str ) )
-{
-}
-
-ArincObject::ArincObject( const char * str )
-	: m_interface( ArincLine::line( str ) )
-{
-}
-
-ArincObject::~ArincObject()
-{
-	if ( m_interface )
-		delete m_interface;
-}
-
-ArincObjectInterface *
-ArincObject::operator->()
-{
-	return m_interface;
-}
-
-ArincObject &
-ArincObject::operator=( const ArincObject & other )
-{
-	if ( m_interface )
-		delete m_interface;
-
-	m_interface = other.m_interface;
-
-	return *this;
-}
-
-ArincObject &
-ArincObject::operator=( const string & str )
-{
-	if ( m_interface )
-		delete m_interface;
-
-	m_interface = ArincLine::line( str );
-
-	return *this;
-}
+#endif
 

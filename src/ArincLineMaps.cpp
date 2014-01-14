@@ -24,38 +24,47 @@
  *   OTHER DEALINGS IN THE SOFTWARE.                                       *
  ***************************************************************************/
 
-/*! \class ArincObject
- *
- * \brief Указатель на ArincObjectInterface
- */
+#include "ArincLineMaps.h"
 
-#ifndef ARINCOBJECT_H
-#define ARINCOBJECT_H
 
-#include "ArincObjectInterface.h"
-
-class ArincObject
+ArincLineMaps::ArincLineMaps()
 {
-	public:
-		ArincObjectInterface * m_interface;
+	// D
+	m_maps[ Arinc::D ][ Arinc::Airport ].interval( 10, 2, 6, 4 );
+	m_maps[ Arinc::D ][ Arinc::Ident ].interval( 19, 2, 13, 4 );
+	m_maps[ Arinc::D ][ Arinc::Frequency ].interval( 22, 3, 25, 2 );
+	m_maps[ Arinc::D ][ Arinc::NavClass ].interval( 27, 5 );
+	m_maps[ Arinc::D ][ Arinc::Dme ].interval( 51, 4 );
+	m_maps[ Arinc::D ][ Arinc::Sens ].interval( 84 );
+	m_maps[ Arinc::D ][ Arinc::Datum ].interval( 84 );
+	m_maps[ Arinc::D ][ Arinc::Name ].interval( 93, 30 );
+	m_maps[ Arinc::D ][ Arinc::Coordinates ].interval( 32, 19 );
+	/*
+	m_maps[ Arinc::D ][ Arinc::Exceed ].interval( 79, 5 );
+	m_maps[ Arinc::D ][ Arinc::Bias ].interval( 85, 2 );
+	m_maps[ Arinc::D ][ Arinc::FreqPrd ].interval( 87, 3 );
+	m_maps[ Arinc::D ][ Arinc::DmeCoordinates ].interval( 55, 19 );
+	m_maps[ Arinc::D ][ Arinc::MagDev ].interval( 74, 5 );
+	//DB
+	m_maps[ Arinc::DB ][ Arinc::Coordinates ].interval( 32, 19 );
 
-	public:
-		ArincObject();
+	// Volume Header
+	m_maps[ Arinc::VolumeHeader ][ Arinc::LabelNumber ].interval( 3 );
+	m_maps[ Arinc::VolumeHeader ][ Arinc::VolumeNumber ].interval( 4, 6 );
+	m_maps[ Arinc::VolumeHeader ][ Arinc::DataFrom ].interval( 37, 14 );
+	m_maps[ Arinc::VolumeHeader ][ Arinc::Tracks ].interval( 51, 2 );
+	*/
+}
 
-		ArincObject( ArincObjectInterface * interface );
+ArincLineMap &
+ArincLineMaps::operator[]( Arinc::Subsection ss )
+{
+	return m_maps[ ss ];
+}
 
-		ArincObject( const string & str );
-
-		ArincObject( const char * str );
-
-		virtual ~ArincObject();
-
-		ArincObjectInterface * operator->();
-
-		ArincObject & operator=( const ArincObject & other );
-
-		ArincObject & operator=( const string & str );
-};
-
-#endif
+const ArincLineMap &
+ArincLineMaps::operator[]( Arinc::Subsection ss ) const
+{
+	return m_maps[ ss ];
+}
 

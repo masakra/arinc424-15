@@ -24,22 +24,70 @@
  *   OTHER DEALINGS IN THE SOFTWARE.                                       *
  ***************************************************************************/
 
-/*! \class 
- *
- * \brief 
- */
+#include "ArincLineInterval.h"
 
-#ifndef ARINCPAINTERFACE_H
-#define ARINCPAINTERFACE_H
-
-#include "ArincObjectInterface.h"
-
-class ArincPaInterface : public ArincObjectInterface
+ArincLineInterval::ArincLineInterval()
+	: std::vector< char >()
 {
-	public:
+}
 
-		virtual QString ident() const = 0;
-};
+bool
+ArincLineInterval::isValid() const
+{
+	return size() > 1 && at( 1 ) != 0;
+}
 
-#endif
+void
+ArincLineInterval::interval( char st1, char le1 )
+{
+	clear();
+
+	push_back( st1 );
+	push_back( le1 );
+}
+
+void
+ArincLineInterval::interval( char st1, char le1, char st2, char le2 )
+{
+	interval( st1, le1 );
+
+	push_back( st2 );
+	push_back( le2 );
+}
+
+bool
+ArincLineInterval::haveFirstPart() const
+{
+	return size() >= 2 && at( 1 ) != 0;
+}
+
+int
+ArincLineInterval::start1() const
+{
+	return size() >= 1 ? at( 0 ) : -1;
+}
+
+int
+ArincLineInterval::length1() const
+{
+	return size() >= 2 ? at( 1 ) : -1;
+}
+
+bool
+ArincLineInterval::haveSecondPart() const
+{
+	return size() >= 4 && at( 3 ) != 0;
+}
+
+int
+ArincLineInterval::start2() const
+{
+	return size() >= 3 ? at( 2 ) : -1;
+}
+
+int
+ArincLineInterval::length2() const
+{
+	return size() >= 4 ? at( 3 ) : -1;
+}
 

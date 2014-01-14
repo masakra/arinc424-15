@@ -36,9 +36,6 @@
 
 class ArincObjectInterface;
 
-using namespace std;
-using namespace geo;
-
 class Arinc
 {
 	private:
@@ -52,8 +49,12 @@ class Arinc
 		/*! \enum Subsection
 		 *
 		 * \brief Подсекции ARINC
+		 *
+		 * Нельзя изменять !!! Многие источники данных опираются на enum Subsection
+		 * как на индекс массива.
 		 */
 		enum Subsection {
+			Unknown = 0,
 			AS,		///< минимальная безопасная высота полёта вне маршрута (MORA)
 			// раздел D. Навигационные средства
 			D,		///< навигационные средства ОВЧ
@@ -92,8 +93,49 @@ class Arinc
 			HV,		///< средство связи вертодрома
 			ET,		///< предпочтительные маршруты
 			EO,		///< препятствия на маршруте
-			Unknown,
 		};
+
+
+		enum DataType {
+			Undefined = 0,
+			Airport,		///< Код ICAO аэропорта с 2-х символьным кодом зоны
+			Cycle,			///< Цикл AIRAC в котором были последние изменения
+			Zone,			///< 3-x символьное обозначение зоны
+			Ident,			///< Идентификатор с 2-х символьным кодом зоны
+			Frequency,		///< Частота
+			Name,			///< Наименование
+			NavClass,
+			Dme,
+			Sens,
+			Datum,
+			Coordinates,
+			DmeCoordinates,
+			// Volume Header
+			Encoding,		///< Кодировка
+			ParityCheck,	///< Контроль чётности
+			LabelNumber,
+			VolumeNumber,
+			DataFrom,
+			Tracks,
+			Density
+		};
+
+		/*
+		enum DataInt {
+			Bias = Datum + 1,
+			Exceed,				///< Превышение
+			FreqPrd				///< Расстояние защиты частоты, в NM (Frequency Protection Distance, 5.150)
+		};
+
+		enum DataDouble {
+			MagDev = FreqPrd + 1		///< Магнитное склонение
+		};
+
+		enum DataCoordinates {
+			Coordinates = MagDev + 1,	///< Координаты
+			DmeCoordinates				///< Координаты DME
+		};
+		*/
 
 		/*
 		\\	static
@@ -103,9 +145,7 @@ class Arinc
 
 		static const char * subsectionAbbr( Subsection ss );
 
-		static double str_to_lon( const string & str );
-
-		static double str_to_lat( const string & str );
+		static const char * dataName( int data );
 };
 
 #endif
