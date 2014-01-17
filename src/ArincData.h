@@ -48,6 +48,8 @@ class ArincData
 		};
 
 	private:
+		Arinc::Field m_field;	// запрошенное поле
+
 		Type m_type;
 
 		union {
@@ -62,17 +64,21 @@ class ArincData
 	public:
 		ArincData();
 
-		ArincData( int i );
+		ArincData( Arinc::Field field, int i );
 
-		ArincData( double d );
+		ArincData( Arinc::Field field, double d );
 
-		ArincData( const std::string & str );
+		ArincData( Arinc::Field field, const std::string & str );
 
-		ArincData( const Coordinates & coords );
+		ArincData( Arinc::Field field, const Coordinates & coords );
 
 		ArincData( const ArincData & other );		// copy constructor
 
 		virtual ~ArincData();
+
+		Arinc::Field field() const;
+
+		Type fieldType() const;
 
 		// установщики
 
@@ -81,6 +87,10 @@ class ArincData
 		ArincData & operator=( const std::string & str );
 
 		// получатели значений
+
+		int toInt() const;
+
+		double toDouble() const;
 
 		std::string toStdString() const;
 
@@ -97,6 +107,8 @@ class ArincData
 		static Coordinates coordinates( const std::string & coords_str );
 
 		static Coordinates coordinates( const std::string & lon_str, const std::string & lat_str );
+
+		static Type fieldType( Arinc::Field field );
 };
 
 #endif

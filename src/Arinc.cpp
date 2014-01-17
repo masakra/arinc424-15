@@ -117,27 +117,34 @@ Arinc::subsectionAbbr( Subsection ss )
 }
 
 const char *
-Arinc::dataName( DataType dataType )
+Arinc::fieldName( Field field )
 {
 	static const char * names[] = {
-		"airport",
-		"cycle",
-		"zone",
-		"ident",
-		"frequency",
-		"name",
-		"navclass",
-		"dme",
+		0,					// Undefined
+
+		"airport",			// Airport
+		"cycle",			// Cycle
+		"datum",			// Datum
+		"dme",				// Dme
+		"ident",			// Ident
+		"merit",			// Merit
+		"name",				// Name
+		"navclass",			// NavClass
+		"zone",				// Zone
+
+		"dmecoordinates",	// DmeCoordinates
+		"coordinates",		// Coordinates
+
+		"frequency",		// Frequency	numeric( 6,2 )
+		"magdev",			// MagDev		numeric( 4,1 )
 		"sens",
-		"datum",
-		"bias",
+
 		"exceed",
+		"bias",
 		"freqprd",
-		"magdev",
-		"coordinates",
 		"dmecoordinates"
 	};
 
-	return names[ dataType ];
+	return names[ field ];
 }
 

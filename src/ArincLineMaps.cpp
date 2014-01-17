@@ -35,7 +35,7 @@ ArincLineMaps::ArincLineMaps()
 	m_maps[ Arinc::D ][ Arinc::Frequency ].interval( 22, 3, 25, 2 );
 	m_maps[ Arinc::D ][ Arinc::NavClass ].interval( 27, 5 );
 	m_maps[ Arinc::D ][ Arinc::Dme ].interval( 51, 4 );
-	m_maps[ Arinc::D ][ Arinc::Sens ].interval( 84 );
+	m_maps[ Arinc::D ][ Arinc::Merit ].interval( 84 );
 	m_maps[ Arinc::D ][ Arinc::Datum ].interval( 84 );
 	m_maps[ Arinc::D ][ Arinc::Name ].interval( 93, 30 );
 	m_maps[ Arinc::D ][ Arinc::Coordinates ].interval( 32, 19 );

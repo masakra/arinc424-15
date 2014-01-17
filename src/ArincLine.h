@@ -39,7 +39,7 @@
 class ArincLine : public std::string, public ArincObjectInterface
 {
 	private:
-		std::string getInterval( Arinc::DataType dataType ) const;
+		std::string getInterval( Arinc::Field field ) const;
 
 		static ArincLineMaps m_maps;
 
@@ -63,7 +63,7 @@ class ArincLine : public std::string, public ArincObjectInterface
 		Coordinates data( Arinc::DataCoordinates data ) const;
 		*/
 
-		ArincData data( Arinc::DataType dataType ) const;
+		ArincData data( Arinc::Field field ) const;
 
 		const ArincLineMap & map() const;
 

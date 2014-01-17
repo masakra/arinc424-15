@@ -105,24 +105,30 @@ class Arinc
 			Tailored
 		};
 
-		enum DataType {
+		enum Field {
+			// ArincData::String
 			Undefined = 0,
+
 			Airport,		///< Код ICAO аэропорта с 2-х символьным кодом зоны
-			Bias,
 			Cycle,			///< Цикл AIRAC в котором были последние изменения
-			Coordinates,
-			Datum,
-			Dme,
+			Datum,			///< Код исходного ориентира
+			Dme,			///< Идентификотор DME
+			Ident,			///< Идентификатор с 2-х символьным кодом зоны
+			Name,			///< Наименование
+			NavClass,		///< Класс навигационного средства
+			Zone,			///< 3-x символьное обозначение зоны
+			// ArincData::Coordinates
 			DmeCoordinates,
+			Coordinates,
+
 			FreqPrd,
 			Frequency,		///< Частота
+			Merit,			///< Чувствительность, показатель качества (был Sens)
+			// ArincData::Int
+			Bias,			///< Смещение ILS/DME
 			Exceed,			///< Превышение
-			Ident,			///< Идентификатор с 2-х символьным кодом зоны
+			// ArincData::Double
 			MagDev,			///< Магнитное склонение
-			Name,			///< Наименование
-			NavClass,
-			Sens,
-			Zone,			///< 3-x символьное обозначение зоны
 			// Volume Header
 			Encoding,		///< Кодировка
 			ParityCheck,	///< Контроль чётности
@@ -131,6 +137,7 @@ class Arinc
 			DataFrom,
 			Tracks,
 			Density
+
 		};
 
 		/*
@@ -141,7 +148,7 @@ class Arinc
 
 		static const char * subsectionAbbr( Subsection ss );
 
-		static const char * dataName( DataType dataType );
+		static const char * fieldName( Field field );
 };
 
 #endif

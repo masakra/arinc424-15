@@ -38,7 +38,7 @@
 #include <map>
 #include <vector>
 
-class ArincLineMap : public std::map< Arinc::DataType, ArincLineInterval >
+class ArincLineMap : public std::map< Arinc::Field, ArincLineInterval >
 {
 	public:
 		ArincLineMap();

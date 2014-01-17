@@ -1,11 +1,22 @@
 #!/bin/sh
 
 TARGET="arinc424-15"
+VERSION="0.1.0"
 MODULES_DEL="core gui"
-GMAKE="/usr/local/bin/gmake"
-QMAKE="/usr/local/bin/qmake-qt4"
-COMPILER=clang
-CXX_FLAGS="-m64 -mmmx -msse -msse2 -msse3"
+
+if [ ${OS} ]	# На Win* выдает что-то типа Windows_NT, на других платформах не определена
+then
+	GMAKE="/c/MinGW/bin/mingw32-make";
+	QMAKE="/c/Qt/4.8.4/bin/qmake";
+else
+	GMAKE="/usr/local/bin/gmake";
+	QMAKE="/usr/local/bin/qmake-qt4";
+	CXX_FLAGS="-m64 -mmmx -msse -msse2 -msse3"
+	SPEC="-spec freebsd-clang"
+	# COMPILER=g++48
+fi
+
+DEFINES="VERSION=\\\\\\\"${VERSION}\\\\\\\""	# aaaaaaaaaaaaaaaaa fuck !!
 INCLUDEPATH="../geo"
 LIBS="-L../geo -lgeo"
 
@@ -31,7 +42,7 @@ then
 	echo "LIBS += ${LIBS}" >> ${TARGET}.pro;
 	echo "libraries += ${LIBS}";
 
-	${QMAKE} -spec freebsd-${COMPILER}
+	${QMAKE} ${SPEC}
 else
 	echo "ERROR: file ${TARGET}.pro not found."
 fi

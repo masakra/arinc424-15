@@ -45,9 +45,9 @@ ArincLine::ArincLine( const std::string & line )
 }
 
 ArincData
-ArincLine::data( Arinc::DataType dataType ) const
+ArincLine::data( Arinc::Field field ) const
 {
-	return ArincData( getInterval( dataType ) );
+	return ArincData( field, getInterval( field ) );
 }
 
 const ArincLineMap &
@@ -217,9 +217,9 @@ ArincLine::subsection( const std::string & str ) // static
 }
 
 std::string
-ArincLine::getInterval( Arinc::DataType dataType ) const
+ArincLine::getInterval( Arinc::Field field ) const
 {
-	const ArincLineInterval & interval = m_maps[ subsection() ][ dataType ];
+	const ArincLineInterval & interval = m_maps[ subsection() ][ field ];
 
 	if ( ! interval.isValid() ) {
 		printf("interval is invalid\n");

@@ -26,33 +26,35 @@
 
 #include "ArincData.h"
 
+#include <math.h>
+
 ArincData::ArincData()
-	: m_type( Invalid )
+	: m_field( Arinc::Undefined ), m_type( Invalid )
 {
 }
 
-ArincData::ArincData( int i )
-	: m_type( Int ), m_int( i )
+ArincData::ArincData( Arinc::Field field, int i )
+	: m_field( field ), m_type( Int ), m_int( i )
 {
 }
 
-ArincData::ArincData( double d )
-	: m_type( Double ), m_double( d )
+ArincData::ArincData( Arinc::Field field, double d )
+	: m_field( field ), m_type( Double ), m_double( d )
 {
 }
 
-ArincData::ArincData( const std::string & str )
-	: m_type( String ), m_string( new std::string( str ) )
+ArincData::ArincData( Arinc::Field field, const std::string & str )
+	: m_field( field ), m_type( String ), m_string( new std::string( str ) )
 {
 }
 
-ArincData::ArincData( const Coordinates & coords )
-	: m_type( Coords ), m_coordinates( new Coordinates( coords ) )
+ArincData::ArincData( Arinc::Field field, const Coordinates & coords )
+	: m_field( field ), m_type( Coords ), m_coordinates( new Coordinates( coords ) )
 {
 }
 
 ArincData::ArincData( const ArincData & other )		// copy constractor
-	: m_type( other.m_type )
+	: m_field( other.m_field ), m_type( other.m_type )
 {
 	switch ( m_type ) {
 		case Int:
@@ -122,6 +124,46 @@ ArincData::operator=( const std::string & str )
 	return *this;
 }
 
+int
+ArincData::toInt() const
+{
+	switch ( m_type ) {
+		case Int:
+			return m_int;
+
+		case Double:
+			return round( m_double );
+
+		case String:
+			return strtol( m_string->c_str(), 0, 10 );
+
+		case Invalid:
+		case Coords:
+		default:
+			return 0;
+	}
+}
+
+double
+ArincData::toDouble() const
+{
+	switch ( m_type ) {
+		case Int:
+			return m_int;
+
+		case Double:
+			return m_double;
+
+		case String:
+			return strtod( m_string->c_str(), 0 );
+
+		case Invalid:
+		case Coords:
+		default:
+			return 0;
+	}
+}
+
 std::string
 ArincData::toStdString() const
 {
@@ -157,7 +199,9 @@ ArincData::toCoordinates() const
 			return *m_coordinates;
 
 		case String: {
-			if ( m_string->size() == 19 )
+			if ( m_string->size() == 19 &&
+					( ( *m_string )[ 0 ] == geo::North || ( *m_string )[ 0 ] == geo::South ) &&
+					( ( *m_string )[ 9 ] == geo::West || ( *m_string )[ 9 ] == geo::East ) )
 				return coordinates( *m_string );
 		}
 
@@ -227,5 +271,38 @@ Coordinates
 ArincData::coordinates( const std::string & lon_str, const std::string & lat_str )	 // static
 {
 	return Coordinates( longitude( lon_str ), latitude( lat_str ) );
+}
+
+Arinc::Field
+ArincData::field() const
+{
+	return m_field;
+}
+
+ArincData::Type
+ArincData::fieldType() const
+{
+	return fieldType( m_field );
+}
+
+ArincData::Type
+ArincData::fieldType( Arinc::Field field ) // static
+{
+	if ( field == Arinc::Undefined )
+		return Invalid;
+
+	else if ( field <= Arinc::Zone )
+		return String;
+
+	else if ( field <= Arinc::Coordinates )
+		return Coords;
+
+	else if ( field <= Arinc::Exceed )
+		return Int;
+
+	else if ( field <= Arinc::MagDev )
+		return Double;
+
+	return Invalid;
 }
 
