@@ -110,34 +110,33 @@ class Arinc
 			Undefined = 0,
 
 			Airport,		///< Код ICAO аэропорта с 2-х символьным кодом зоны
+			Bias,			///< Смещение ILS/DME
+			Coordinates,	///< Координаты
 			Cycle,			///< Цикл AIRAC в котором были последние изменения
 			Datum,			///< Код исходного ориентира
 			Dme,			///< Идентификотор DME
+			DmeCoordinates,	///< Координаты DME
+			Encoding,		///< Кодировка
+			Exceed,			///< Превышение
+			Frequency,		///< Частота
+			FreqPrd,		///< Защита частоты
 			Ident,			///< Идентификатор с 2-х символьным кодом зоны
+			MagDev,			///< Магнитное склонение
 			Merit,			///< Чувствительность, показатель качества (был Sens)
 			Name,			///< Наименование
 			NavClass,		///< Класс навигационного средства
+			ParityCheck,	///< Контроль чётности
 			Zone,			///< 3-x символьное обозначение зоны
 			// ArincData::Coordinates
-			DmeCoordinates,
-			Coordinates,
 
-			Frequency,		///< Частота
-			FreqPrd,
 			// ArincData::Int
-			Bias,			///< Смещение ILS/DME
-			Exceed,			///< Превышение
 			// ArincData::Double
-			MagDev,			///< Магнитное склонение
 			// Volume Header
-			Encoding,		///< Кодировка
-			ParityCheck,	///< Контроль чётности
 			LabelNumber,
 			VolumeNumber,
 			DataFrom,
 			Tracks,
 			Density
-
 		};
 
 		/*

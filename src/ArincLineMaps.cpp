@@ -32,7 +32,7 @@ ArincLineMaps::ArincLineMaps()
 	// D
 	m_maps[ Arinc::D ][ Arinc::Airport ].interval( 10, 2, 6, 4 );
 	m_maps[ Arinc::D ][ Arinc::Ident ].interval( 19, 2, 13, 4 );
-	m_maps[ Arinc::D ][ Arinc::Frequency ].interval( 22, 3, 25, 2 );
+	m_maps[ Arinc::D ][ Arinc::Frequency ].interval( 22, 5 );//3, 25, 2 );
 	m_maps[ Arinc::D ][ Arinc::NavClass ].interval( 27, 5 );
 	m_maps[ Arinc::D ][ Arinc::Dme ].interval( 51, 4 );
 	m_maps[ Arinc::D ][ Arinc::Merit ].interval( 84 );
@@ -45,9 +45,16 @@ ArincLineMaps::ArincLineMaps()
 	m_maps[ Arinc::D ][ Arinc::DmeCoordinates ].interval( 55, 19 );
 	m_maps[ Arinc::D ][ Arinc::MagDev ].interval( 74, 5 );
 	//DB
-	/*
+	//m_maps[ Arinc::DB ][ Arinc::Airport ].interval( 6, 4 );		// оно есть, но всегда пустое
+	m_maps[ Arinc::DB ][ Arinc::Ident ].interval( 19, 2, 13, 4 );
+	m_maps[ Arinc::DB ][ Arinc::Frequency ].interval( 22, 5 );
+	m_maps[ Arinc::DB ][ Arinc::NavClass ].interval( 27, 5 );
 	m_maps[ Arinc::DB ][ Arinc::Coordinates ].interval( 32, 19 );
+	m_maps[ Arinc::DB ][ Arinc::MagDev ].interval( 74, 5 );
+	m_maps[ Arinc::DB ][ Arinc::Datum ].interval( 90, 3 );
+	m_maps[ Arinc::DB ][ Arinc::Name ].interval( 93, 30 );
 
+	/*
 	// Volume Header
 	m_maps[ Arinc::VolumeHeader ][ Arinc::LabelNumber ].interval( 3 );
 	m_maps[ Arinc::VolumeHeader ][ Arinc::VolumeNumber ].interval( 4, 6 );

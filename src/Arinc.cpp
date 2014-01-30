@@ -123,25 +123,27 @@ Arinc::fieldName( Field field )
 		0,					// Undefined
 
 		"airport",			// Airport
+		"bias",
+		"coordinates",		// Coordinates
 		"cycle",			// Cycle
 		"datum",			// Datum
 		"dme",				// Dme
+		"dmecoordinates",	// DmeCoordinates
+		"encoding",
+		"exceed",
+		"frequency",		// Frequency	numeric( 6,2 )
+		"freqprd",
 		"ident",			// Ident
+		"magdev",			// MagDev		numeric( 4,1 )
 		"merit",			// Merit
 		"name",				// Name
 		"navclass",			// NavClass
-		"zone",				// Zone
+		"paritycheck",
+		"zone"				// Zone
 
-		"dmecoordinates",	// DmeCoordinates
-		"coordinates",		// Coordinates
 
-		"frequency",		// Frequency	numeric( 6,2 )
-		"freqprd",
 
-		"bias",
-		"exceed",
 
-		"magdev"			// MagDev		numeric( 4,1 )
 	};
 
 	return names[ field ];
