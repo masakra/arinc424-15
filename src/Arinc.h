@@ -114,6 +114,7 @@ class Arinc
 			Datum,			///< Код исходного ориентира
 			Dme,			///< Идентификотор DME
 			Ident,			///< Идентификатор с 2-х символьным кодом зоны
+			Merit,			///< Чувствительность, показатель качества (был Sens)
 			Name,			///< Наименование
 			NavClass,		///< Класс навигационного средства
 			Zone,			///< 3-x символьное обозначение зоны
@@ -121,9 +122,8 @@ class Arinc
 			DmeCoordinates,
 			Coordinates,
 
-			FreqPrd,
 			Frequency,		///< Частота
-			Merit,			///< Чувствительность, показатель качества (был Sens)
+			FreqPrd,
 			// ArincData::Int
 			Bias,			///< Смещение ILS/DME
 			Exceed,			///< Превышение

@@ -26,6 +26,8 @@
 
 #include "ArincData.h"
 
+#include <stdio.h>		// Для Win*
+#include <stdlib.h>		// Для Win*
 #include <math.h>
 
 ArincData::ArincData()

@@ -8,17 +8,18 @@ if [ ${OS} ]	# На Win* выдает что-то типа Windows_NT, на др
 then
 	GMAKE="/c/MinGW/bin/mingw32-make";
 	QMAKE="/c/Qt/4.8.4/bin/qmake";
+	LIBS="-L../geo/release -lgeo"
 else
 	GMAKE="/usr/local/bin/gmake";
 	QMAKE="/usr/local/bin/qmake-qt4";
 	CXX_FLAGS="-m64 -mmmx -msse -msse2 -msse3"
 	SPEC="-spec freebsd-clang"
 	# COMPILER=g++48
+	LIBS="-L../geo -lgeo"
 fi
 
 DEFINES="VERSION=\\\\\\\"${VERSION}\\\\\\\""	# aaaaaaaaaaaaaaaaa fuck !!
 INCLUDEPATH="../geo"
-LIBS="-L../geo -lgeo"
 
 ${GMAKE} distclean
 

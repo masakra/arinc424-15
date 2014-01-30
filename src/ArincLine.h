@@ -43,7 +43,6 @@ class ArincLine : public std::string, public ArincObjectInterface
 
 		static ArincLineMaps m_maps;
 
-
 	public:
 		ArincLine();
 
@@ -78,6 +77,8 @@ class ArincLine : public std::string, public ArincObjectInterface
 		static Arinc::Subsection subsection( const std::string & str );
 
 		static double decodeMagDev( const std::string & str );
+
+		const ArincLineMap & map( Arinc::Subsection ss );
 };
 
 

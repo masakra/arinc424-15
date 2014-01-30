@@ -26,7 +26,10 @@
 
 #include "ArincLine.h"
 
+
 #include <iostream>
+#include <stdio.h>		// для Win*
+#include <stdlib.h>		// для Win*
 #include <math.h>
 
 #include "ArincLineInterval.h"
@@ -54,6 +57,12 @@ const ArincLineMap &
 ArincLine::map() const
 {
 	return m_maps[ subsection() ];
+}
+
+const ArincLineMap &
+ArincLine::map( Arinc::Subsection ss )
+{
+	return m_maps[ ss ];
 }
 
 int

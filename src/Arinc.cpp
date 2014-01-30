@@ -136,13 +136,12 @@ Arinc::fieldName( Field field )
 		"coordinates",		// Coordinates
 
 		"frequency",		// Frequency	numeric( 6,2 )
-		"magdev",			// MagDev		numeric( 4,1 )
-		"sens",
-
-		"exceed",
-		"bias",
 		"freqprd",
-		"dmecoordinates"
+
+		"bias",
+		"exceed",
+
+		"magdev"			// MagDev		numeric( 4,1 )
 	};
 
 	return names[ field ];
