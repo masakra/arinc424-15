@@ -34,7 +34,7 @@
 
 #include "ArincLineInterval.h"
 
-#include <Geo>
+//#include <Geo>
 
 ArincLineMaps ArincLine::m_maps;
 
@@ -47,10 +47,10 @@ ArincLine::ArincLine( const std::string & line )
 {
 }
 
-ArincData
+std::string
 ArincLine::data( Arinc::Field field ) const
 {
-	return ArincData( field, getInterval( field ) );
+	return getInterval( field );
 }
 
 const ArincLineMap &
@@ -303,6 +303,7 @@ ArincLine::data( Arinc::DataCoordinates data ) const
 }
 */
 
+/*
 double
 ArincLine::decodeMagDev( const std::string & str )
 {
@@ -310,5 +311,6 @@ ArincLine::decodeMagDev( const std::string & str )
 
 	return str.at( 0 ) == geo::West ? -md : md;
 }
+*/
 
 

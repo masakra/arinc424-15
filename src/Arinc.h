@@ -32,7 +32,7 @@
 #ifndef ARINC_H
 #define ARINC_H
 
-#include <Geo>
+//#include <Geo>
 
 class ArincObjectInterface;
 

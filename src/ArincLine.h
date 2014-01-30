@@ -32,11 +32,10 @@
 #ifndef ARINCLINE_H
 #define ARINCLINE_H
 
-#include "ArincData.h"
-#include "ArincObjectInterface.h"
+#include <string>
 #include "ArincLineMaps.h"
 
-class ArincLine : public std::string, public ArincObjectInterface
+class ArincLine : public std::string
 {
 	private:
 		std::string getInterval( Arinc::Field field ) const;
@@ -62,7 +61,7 @@ class ArincLine : public std::string, public ArincObjectInterface
 		Coordinates data( Arinc::DataCoordinates data ) const;
 		*/
 
-		ArincData data( Arinc::Field field ) const;
+		std::string data( Arinc::Field field ) const;
 
 		const ArincLineMap & map() const;
 
@@ -76,7 +75,7 @@ class ArincLine : public std::string, public ArincObjectInterface
 
 		static Arinc::Subsection subsection( const std::string & str );
 
-		static double decodeMagDev( const std::string & str );
+		//static double decodeMagDev( const std::string & str );
 
 		const ArincLineMap & map( Arinc::Subsection ss );
 };
