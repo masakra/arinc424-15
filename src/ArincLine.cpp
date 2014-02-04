@@ -34,17 +34,24 @@
 
 #include "ArincLineInterval.h"
 
-//#include <Geo>
-
 ArincLineMaps ArincLine::m_maps;
 
 ArincLine::ArincLine()
+	: m_cached_subsectionType( Arinc::UndefinedType )
 {
 }
 
 ArincLine::ArincLine( const std::string & line )
-	: std::string( line )
+	: std::string( line ), m_cached_subsectionType( Arinc::UndefinedType )
 {
+}
+
+ArincLine &
+ArincLine::operator=( const std::string & str )
+{
+	m_cached_subsectionType = Arinc::UndefinedType;
+	std::string::operator=( str );
+	return *this;
 }
 
 std::string
@@ -244,6 +251,9 @@ ArincLine::getInterval( Arinc::Field field ) const
 
 	if ( interval.haveSecondPart() )
 		str += substr( interval.start2(), interval.length2() );
+
+	if ( interval.haveThirdPart() )
+		str += substr( interval.start3(), interval.length3() );
 
 	return str;
 }

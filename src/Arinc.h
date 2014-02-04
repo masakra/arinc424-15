@@ -96,13 +96,18 @@ class Arinc
 			////////////////////////////////////////////////////
 			/// служебные строки файла в формате Arinc424-15 ///
 			////////////////////////////////////////////////////
+		};
+
+		enum Type {
+			NoType,			///< Нет типа
 			VolumeHeader,
 			Header1,
 			Header2,
 			EndOfFile,
 			EndOfVolume,
-			Standard,
-			Tailored
+			Standard,		// Standard точечный объект
+			StandardWay,	// Standard объект-путь
+			Tailored		// должна быть последней \sa ArincLineMap::m_maps
 		};
 
 		enum Field {
@@ -110,22 +115,50 @@ class Arinc
 			Undefined = 0,
 
 			Airport,		///< Код ICAO аэропорта с 2-х символьным кодом зоны
+			AltitMax,		///< Максимальная высота
+			AltitMin,		///< Минимальная высота
+			AltitMin2,		///< Минимальная высота 2
 			Bias,			///< Смещение ILS/DME
+			Border,			///< Код границы (5.18)
+			Comment,		///< Примечание
 			Coordinates,	///< Координаты
+			CourseIb,		///< Курс, заданный Магнитный Путевой Угол (МПУ) на... (inbound)
+			CourseOb,		///< Курс, заданный Магнитный Путевой Угол (МПУ) от... (outbound)
+			CruisingTable,	///< Таблица крейсерских жшелонов 5.134
 			Cycle,			///< Цикл AIRAC в котором были последние изменения
 			Datum,			///< Код исходного ориентира
+			Direction,		///< Ограничение по направлению 5.115
+			Distance,		///< Расстояние
 			Dme,			///< Идентификотор DME
 			DmeCoordinates,	///< Координаты DME
+			Duplicate,		///< Идентификатор множественности маршрутов в точке (Duplicate Indicator)
 			Encoding,		///< Кодировка
+			EuIndicator,	///< Индикатор ограничения
 			Exceed,			///< Превышение
+			Fix,			///< Идентификатор ППМ
 			Frequency,		///< Частота
 			FreqPrd,		///< Защита частоты
 			Ident,			///< Идентификатор с 2-х символьным кодом зоны
+			Level,			///< Эшелон
 			MagDev,			///< Магнитное склонение
 			Merit,			///< Чувствительность, показатель качества (был Sens)
 			Name,			///< Наименование
 			NavClass,		///< Класс навигационного средства
+			Order,			///< Порядок точек в многоточечном объекте
 			ParityCheck,	///< Контроль чётности
+			RecdNav,		///< Рекомендуемое навигационное средство
+			Region,			///< Код региона (Region code)
+			Rho,			///< Ро 5.25
+			Rnp,			///< Требуемая навигационная характеристика (Required Navigation Performance)
+			RouteType,		///< Тип маршрута
+			Speed,			///< Скорость
+			Theta,			///< Тэта 5.24
+			Time,			///< Время
+			Turn,			///< Направление разворота
+			WaypointDescription,	///< Код описания ППМ
+			WaypointFormat,	///< Индикатор формата имени (Name format indicator)
+			WaypointType,	///< Тип ППМ
+			WaypointUsage,	///< Использование ППМ на маршруте, по сути тип воздушного пространства
 			Zone,			///< 3-x символьное обозначение зоны
 			// ArincData::Coordinates
 

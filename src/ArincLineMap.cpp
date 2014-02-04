@@ -33,7 +33,7 @@ ArincLineMap::ArincLineMap()
 {
 	// общие поля для всех подсекций
 
-	( *this )[ Arinc::Cycle ].interval( 128, 4 );
-	( *this )[ Arinc::Zone ].interval( 1, 3 );
+	( *this )[ Arinc::Cycle ].span( 128, 4 );
+	( *this )[ Arinc::Zone ].span( 1, 3 );
 }
 

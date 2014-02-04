@@ -42,40 +42,30 @@ class ArincLine : public std::string
 
 		static ArincLineMaps m_maps;
 
+		Arinc::Type m_cached_type;
+
 	public:
 		ArincLine();
 
 		ArincLine( const std::string & line );
 
+		ArincLine & operator=( const std::string & str );
+
 		int type() const;
 
 		Arinc::Subsection subsection() const;
-
-		/*
-		std::string data( Arinc::DataString data ) const;
-
-		int data( Arinc::DataInt data ) const;
-
-		double data( Arinc::DataDouble data ) const;
-
-		Coordinates data( Arinc::DataCoordinates data ) const;
-		*/
 
 		std::string data( Arinc::Field field ) const;
 
 		const ArincLineMap & map() const;
 
+
 		/*
 		\\	static
 		*/
-
-		//static ArincLine * line( const std::string & str );
-
 		static int type( const std::string & str );
 
 		static Arinc::Subsection subsection( const std::string & str );
-
-		//static double decodeMagDev( const std::string & str );
 
 		const ArincLineMap & map( Arinc::Subsection ss );
 };

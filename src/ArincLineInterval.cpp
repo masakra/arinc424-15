@@ -27,7 +27,7 @@
 #include "ArincLineInterval.h"
 
 ArincLineInterval::ArincLineInterval()
-	: std::vector< unsigned char >()
+	: std::vector< unsigned char >(), m_subsectionType( Arinc::Node )
 {
 }
 
@@ -38,21 +38,33 @@ ArincLineInterval::isValid() const
 }
 
 void
-ArincLineInterval::interval( unsigned char st1, unsigned char le1 )
+ArincLineInterval::span( unsigned char st1, unsigned char le1, Arinc::Type type )
 {
 	clear();
+
+	m_type = type;
 
 	push_back( st1 );
 	push_back( le1 );
 }
 
 void
-ArincLineInterval::interval( unsigned char st1, unsigned char le1, unsigned char st2, unsigned char le2 )
+ArincLineInterval::span( unsigned char st1, unsigned char le1, unsigned char st2, unsigned char le2, Arinc::SubsectionType ssType )
 {
-	interval( st1, le1 );
+	span( st1, le1, ssType );
 
 	push_back( st2 );
 	push_back( le2 );
+}
+
+void
+ArincLineInterval::span( unsigned char st1, unsigned char le1, unsigned char st2, unsigned char le2,
+		unsigned char st3, unsigned char le3, Arinc::SubsectionType ssType )
+{
+	span( st1, le1, st2, le2, ssType );
+
+	push_back( st3 );
+	push_back( le3 );
 }
 
 bool
@@ -89,5 +101,29 @@ int
 ArincLineInterval::length2() const
 {
 	return size() >= 4 ? at( 3 ) : -1;
+}
+
+bool
+ArincLineInterval::haveThirdPart() const
+{
+	return size() >= 6 && at( 5 ) != 0;
+}
+
+int
+ArincLineInterval::start3() const
+{
+	return size() >=6 ? at( 4 ) : -1;
+}
+
+int
+ArincLineInterval::length3() const
+{
+	return size() >= 6 ? at( 5 ) : -1;
+}
+
+Arinc::SubsectionType
+ArincLineInterval::subsectionType() const
+{
+	return m_subsectionType;
 }
 

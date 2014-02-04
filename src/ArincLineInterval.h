@@ -35,15 +35,23 @@
 #define ARINCLINEINTERVAL_H
 
 #include <vector>
+#include "Arinc.h"
 
 class ArincLineInterval : public std::vector< unsigned char >
 {
+	private:
+		Arinc::Type m_type;
+
 	public:
 		ArincLineInterval();
 
-		void interval( unsigned char st1, unsigned char le1 = 1 );
+		void span( unsigned char st1, unsigned char le1 = 1, Arinc::Type type = Arinc::Standard );
 
-		void interval( unsigned char st1, unsigned char le1, unsigned char st2, unsigned char le2 );
+		void span( unsigned char st1, unsigned char le1, unsigned char st2, unsigned char le2,
+				Arinc::Type type = Arinc::Standard );
+
+		void span( unsigned char st1, unsigned char le1, unsigned char st2, unsigned char le2,
+				unsigned char st3, unsigned char le3, Arinc::Type type = Arinc::Standard );
 
 		bool isValid() const;
 
@@ -56,6 +64,13 @@ class ArincLineInterval : public std::vector< unsigned char >
 
 		int start2() const;
 		int length2() const;
+
+		bool haveThirdPart() const;
+
+		int start3() const;
+		int length3() const;
+
+		Arinc::Type type() const;
 };
 
 #endif

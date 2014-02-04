@@ -123,27 +123,51 @@ Arinc::fieldName( Field field )
 		0,					// Undefined
 
 		"airport",			// Airport
+		"altitmax",			// AltitMax
+		"altitmin",			// AltitMin
+		"altitmin2",		// AltitMin2
 		"bias",
+		"border",			// Border - код границы 5.18
+		"comm",				// Comment
 		"coordinates",		// Coordinates
+		"courseib",			// CourseIb
+		"courseob",			// CourseOb
+		"crstbl",			// CruisingTable - таблица крейсерских эшелонов 5.134
 		"cycle",			// Cycle
 		"datum",			// Datum
+		"direction",		// Direction - ограничение по направлению 5.115
+		"distance",			// Distance
 		"dme",				// Dme
 		"dmecoordinates",	// DmeCoordinates
+		"duplicate",		// Duplicate
 		"encoding",
+		"eu",				// EuIndicator
 		"exceed",
+		"fix",				// Fix
 		"frequency",		// Frequency	numeric( 6,2 )
 		"freqprd",
 		"ident",			// Ident
+		"level",			// Level - эшелон
 		"magdev",			// MagDev		numeric( 4,1 )
 		"merit",			// Merit
 		"name",				// Name
 		"navclass",			// NavClass
+		"ord",				// Order
 		"paritycheck",
+		"recdnav",			// RecdNav - рекомендуемое навигационное средство
+		"region",			// Region
+		"rho",				// Rho 5.25
+		"rnp",				// Required Navigation Performance
+		"routetype",		// RouteType - тип маршрута
+		"speed",			// Speed
+		"theta",			// Theta 5.24
+		"time",				// Time
+		"turn",				// Turn
+		"wpdesc",			// WaypointDescription
+		"wpformat",			// WaypointFormat
+		"wptype",			// WaypointType
+		"wpusage",			// WaypointUsage
 		"zone"				// Zone
-
-
-
-
 	};
 
 	return names[ field ];
