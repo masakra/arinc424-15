@@ -76,7 +76,7 @@ ArincLineMaps::ArincLineMaps()
 	m_maps[ Arinc::EP ][ Arinc::Speed ].span( 59, 3 );
 	m_maps[ Arinc::EP ][ Arinc::Comment ].span( 98, 25 );
 	//ER
-	m_maps[ Arinc::ER ][ Arinc::Ident ].span( 13, 6, Arinc::Way );
+	m_maps[ Arinc::ER ][ Arinc::Ident ].span( 13, 6, Arinc::StandardWay );
 	m_maps[ Arinc::ER ][ Arinc::Order ].span( 25, 4 );
 	m_maps[ Arinc::ER ][ Arinc::Fix ].span( 36, 2, 34, 2, 29, 5 );
 	m_maps[ Arinc::ER ][ Arinc::WaypointDescription ].span( 39, 4 );

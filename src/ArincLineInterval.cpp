@@ -27,7 +27,7 @@
 #include "ArincLineInterval.h"
 
 ArincLineInterval::ArincLineInterval()
-	: std::vector< unsigned char >(), m_subsectionType( Arinc::Node )
+	: std::vector< unsigned char >(), m_type( Arinc::NoType )
 {
 }
 
@@ -49,9 +49,9 @@ ArincLineInterval::span( unsigned char st1, unsigned char le1, Arinc::Type type 
 }
 
 void
-ArincLineInterval::span( unsigned char st1, unsigned char le1, unsigned char st2, unsigned char le2, Arinc::SubsectionType ssType )
+ArincLineInterval::span( unsigned char st1, unsigned char le1, unsigned char st2, unsigned char le2, Arinc::Type type )
 {
-	span( st1, le1, ssType );
+	span( st1, le1, type );
 
 	push_back( st2 );
 	push_back( le2 );
@@ -59,9 +59,9 @@ ArincLineInterval::span( unsigned char st1, unsigned char le1, unsigned char st2
 
 void
 ArincLineInterval::span( unsigned char st1, unsigned char le1, unsigned char st2, unsigned char le2,
-		unsigned char st3, unsigned char le3, Arinc::SubsectionType ssType )
+		unsigned char st3, unsigned char le3, Arinc::Type type )
 {
-	span( st1, le1, st2, le2, ssType );
+	span( st1, le1, st2, le2, type );
 
 	push_back( st3 );
 	push_back( le3 );
@@ -121,9 +121,9 @@ ArincLineInterval::length3() const
 	return size() >= 6 ? at( 5 ) : -1;
 }
 
-Arinc::SubsectionType
-ArincLineInterval::subsectionType() const
+Arinc::Type
+ArincLineInterval::type() const
 {
-	return m_subsectionType;
+	return m_type;
 }
 

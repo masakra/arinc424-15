@@ -37,19 +37,19 @@
 ArincLineMaps ArincLine::m_maps;
 
 ArincLine::ArincLine()
-	: m_cached_subsectionType( Arinc::UndefinedType )
+	: m_cached_type( Arinc::NoType )
 {
 }
 
 ArincLine::ArincLine( const std::string & line )
-	: std::string( line ), m_cached_subsectionType( Arinc::UndefinedType )
+	: std::string( line ), m_cached_type( Arinc::NoType )
 {
 }
 
 ArincLine &
 ArincLine::operator=( const std::string & str )
 {
-	m_cached_subsectionType = Arinc::UndefinedType;
+	m_cached_type = Arinc::NoType;
 	std::string::operator=( str );
 	return *this;
 }
