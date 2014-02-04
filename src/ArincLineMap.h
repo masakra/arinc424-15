@@ -32,13 +32,12 @@
 #ifndef ARINCLINEMAP_H
 #define ARINCLINEMAP_H
 
-//#include "ArincData.h"
 #include "Arinc.h"
-#include "ArincLineInterval.h"
+#include "ArincLineSpan.h"
 #include <map>
 #include <vector>
 
-class ArincLineMap : public std::map< Arinc::Field, ArincLineInterval >
+class ArincLineMap : public std::map< Arinc::Field, ArincLineSpan >
 {
 	public:
 		ArincLineMap();

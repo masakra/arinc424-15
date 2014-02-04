@@ -24,54 +24,106 @@
  *   OTHER DEALINGS IN THE SOFTWARE.                                       *
  ***************************************************************************/
 
-/*! \class ArincLineInterval
- *
- * \brief Интервал для вырезки дынных
- *
- * Может быть два интервала. В этом случае результаты вырезок конкатенируются.
- */
+#include "ArincLineSpan.h"
 
-#ifndef ARINCLINEINTERVAL_H
-#define ARINCLINEINTERVAL_H
-
-#include <vector>
-#include "Arinc.h"
-
-class ArincLineInterval : public std::vector< unsigned char >
+ArincLineSpan::ArincLineSpan()
+	: std::vector< unsigned char >(), m_type( Arinc::NoType )
 {
-	private:
-		Arinc::Type m_type;
+}
 
-	public:
-		ArincLineInterval();
+bool
+ArincLineSpan::isValid() const
+{
+	return size() > 1 && at( 1 ) != 0;
+}
 
-		void span( unsigned char st1, unsigned char le1 = 1, Arinc::Type type = Arinc::Standard );
+void
+ArincLineSpan::span( unsigned char st1, unsigned char le1, Arinc::Type type )
+{
+	clear();
 
-		void span( unsigned char st1, unsigned char le1, unsigned char st2, unsigned char le2,
-				Arinc::Type type = Arinc::Standard );
+	m_type = type;
 
-		void span( unsigned char st1, unsigned char le1, unsigned char st2, unsigned char le2,
-				unsigned char st3, unsigned char le3, Arinc::Type type = Arinc::Standard );
+	push_back( st1 );
+	push_back( le1 );
+}
 
-		bool isValid() const;
+void
+ArincLineSpan::span( unsigned char st1, unsigned char le1, unsigned char st2, unsigned char le2, Arinc::Type type )
+{
+	span( st1, le1, type );
 
-		bool haveFirstPart() const;
+	push_back( st2 );
+	push_back( le2 );
+}
 
-		int start1() const;
-		int length1() const;
+void
+ArincLineSpan::span( unsigned char st1, unsigned char le1, unsigned char st2, unsigned char le2,
+		unsigned char st3, unsigned char le3, Arinc::Type type )
+{
+	span( st1, le1, st2, le2, type );
 
-		bool haveSecondPart() const;
+	push_back( st3 );
+	push_back( le3 );
+}
 
-		int start2() const;
-		int length2() const;
+bool
+ArincLineSpan::haveFirstPart() const
+{
+	return size() >= 2 && at( 1 ) != 0;
+}
 
-		bool haveThirdPart() const;
+int
+ArincLineSpan::start1() const
+{
+	return size() >= 1 ? at( 0 ) : -1;
+}
 
-		int start3() const;
-		int length3() const;
+int
+ArincLineSpan::length1() const
+{
+	return size() >= 2 ? at( 1 ) : -1;
+}
 
-		Arinc::Type type() const;
-};
+bool
+ArincLineSpan::haveSecondPart() const
+{
+	return size() >= 4 && at( 3 ) != 0;
+}
 
-#endif
+int
+ArincLineSpan::start2() const
+{
+	return size() >= 3 ? at( 2 ) : -1;
+}
+
+int
+ArincLineSpan::length2() const
+{
+	return size() >= 4 ? at( 3 ) : -1;
+}
+
+bool
+ArincLineSpan::haveThirdPart() const
+{
+	return size() >= 6 && at( 5 ) != 0;
+}
+
+int
+ArincLineSpan::start3() const
+{
+	return size() >=6 ? at( 4 ) : -1;
+}
+
+int
+ArincLineSpan::length3() const
+{
+	return size() >= 6 ? at( 5 ) : -1;
+}
+
+Arinc::Type
+ArincLineSpan::type() const
+{
+	return m_type;
+}
 

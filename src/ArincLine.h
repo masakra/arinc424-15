@@ -38,11 +38,11 @@
 class ArincLine : public std::string
 {
 	private:
-		std::string getInterval( Arinc::Field field ) const;
+		std::string getSpan( Arinc::Field field ) const;
 
 		static ArincLineMaps m_maps;
 
-		Arinc::Type m_cached_type;
+		mutable Arinc::Type m_cached_type;
 
 	public:
 		ArincLine();
@@ -51,7 +51,7 @@ class ArincLine : public std::string
 
 		ArincLine & operator=( const std::string & str );
 
-		int type() const;
+		Arinc::Type type() const;
 
 		Arinc::Subsection subsection() const;
 
@@ -63,7 +63,7 @@ class ArincLine : public std::string
 		/*
 		\\	static
 		*/
-		static int type( const std::string & str );
+		static Arinc::Type type( const std::string & str );
 
 		static Arinc::Subsection subsection( const std::string & str );
 

@@ -24,106 +24,54 @@
  *   OTHER DEALINGS IN THE SOFTWARE.                                       *
  ***************************************************************************/
 
-#include "ArincLineInterval.h"
+/*! \class ArincLineSpan
+ *
+ * \brief Интервал для вырезки дынных
+ *
+ * Может быть два и три интервала. В этом случае результаты вырезок конкатенируются.
+ */
 
-ArincLineInterval::ArincLineInterval()
-	: std::vector< unsigned char >(), m_type( Arinc::NoType )
+#ifndef ARINCLINESPAN_H
+#define ARINCLINESPAN_H
+
+#include <vector>
+#include "Arinc.h"
+
+class ArincLineSpan : public std::vector< unsigned char >
 {
-}
+	private:
+		Arinc::Type m_type;
 
-bool
-ArincLineInterval::isValid() const
-{
-	return size() > 1 && at( 1 ) != 0;
-}
+	public:
+		ArincLineSpan();
 
-void
-ArincLineInterval::span( unsigned char st1, unsigned char le1, Arinc::Type type )
-{
-	clear();
+		void span( unsigned char st1, unsigned char le1 = 1, Arinc::Type type = Arinc::Standard );
 
-	m_type = type;
+		void span( unsigned char st1, unsigned char le1, unsigned char st2, unsigned char le2,
+				Arinc::Type type = Arinc::Standard );
 
-	push_back( st1 );
-	push_back( le1 );
-}
+		void span( unsigned char st1, unsigned char le1, unsigned char st2, unsigned char le2,
+				unsigned char st3, unsigned char le3, Arinc::Type type = Arinc::Standard );
 
-void
-ArincLineInterval::span( unsigned char st1, unsigned char le1, unsigned char st2, unsigned char le2, Arinc::Type type )
-{
-	span( st1, le1, type );
+		bool isValid() const;
 
-	push_back( st2 );
-	push_back( le2 );
-}
+		bool haveFirstPart() const;
 
-void
-ArincLineInterval::span( unsigned char st1, unsigned char le1, unsigned char st2, unsigned char le2,
-		unsigned char st3, unsigned char le3, Arinc::Type type )
-{
-	span( st1, le1, st2, le2, type );
+		int start1() const;
+		int length1() const;
 
-	push_back( st3 );
-	push_back( le3 );
-}
+		bool haveSecondPart() const;
 
-bool
-ArincLineInterval::haveFirstPart() const
-{
-	return size() >= 2 && at( 1 ) != 0;
-}
+		int start2() const;
+		int length2() const;
 
-int
-ArincLineInterval::start1() const
-{
-	return size() >= 1 ? at( 0 ) : -1;
-}
+		bool haveThirdPart() const;
 
-int
-ArincLineInterval::length1() const
-{
-	return size() >= 2 ? at( 1 ) : -1;
-}
+		int start3() const;
+		int length3() const;
 
-bool
-ArincLineInterval::haveSecondPart() const
-{
-	return size() >= 4 && at( 3 ) != 0;
-}
+		Arinc::Type type() const;
+};
 
-int
-ArincLineInterval::start2() const
-{
-	return size() >= 3 ? at( 2 ) : -1;
-}
-
-int
-ArincLineInterval::length2() const
-{
-	return size() >= 4 ? at( 3 ) : -1;
-}
-
-bool
-ArincLineInterval::haveThirdPart() const
-{
-	return size() >= 6 && at( 5 ) != 0;
-}
-
-int
-ArincLineInterval::start3() const
-{
-	return size() >=6 ? at( 4 ) : -1;
-}
-
-int
-ArincLineInterval::length3() const
-{
-	return size() >= 6 ? at( 5 ) : -1;
-}
-
-Arinc::Type
-ArincLineInterval::type() const
-{
-	return m_type;
-}
+#endif
 

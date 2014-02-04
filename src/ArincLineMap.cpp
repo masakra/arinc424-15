@@ -29,7 +29,7 @@
 #include "ArincLine.h"
 
 ArincLineMap::ArincLineMap()
-	: std::map< Arinc::Field, ArincLineInterval >()
+	: std::map< Arinc::Field, ArincLineSpan >()
 {
 	// общие поля для всех подсекций
 

@@ -32,7 +32,7 @@
 #include <stdlib.h>		// для Win*
 #include <math.h>
 
-#include "ArincLineInterval.h"
+#include "ArincLineSpan.h"
 
 ArincLineMaps ArincLine::m_maps;
 
@@ -57,7 +57,7 @@ ArincLine::operator=( const std::string & str )
 std::string
 ArincLine::data( Arinc::Field field ) const
 {
-	return getInterval( field );
+	return getSpan( field );
 }
 
 const ArincLineMap &
@@ -72,16 +72,31 @@ ArincLine::map( Arinc::Subsection ss )
 	return m_maps[ ss ];
 }
 
-int
+Arinc::Type
 ArincLine::type() const
 {
-	if ( size() >= 3 )
-		return type( *this );
+	if ( m_cached_type != Arinc::NoType )
+		return m_cached_type;
 
-	return Arinc::Unknown;
+	if ( size() < 3 )
+		return m_cached_type;	// Arinc::NoType
+
+	m_cached_type = type( *this );	// static function call
+
+	// проверка на Arinc::StandardWay
+	// проход по m_maps для поиска интевала с типом Arinc::StandardWay
+	if ( m_cached_type == Arinc::Standard ) {
+		const Arinc::Subsection ss = subsection();
+		for ( ArincLineMap::const_iterator i = m_maps[ ss ].begin(); i != m_maps[ ss ].end(); ++i )
+			// i->second имеет тип IrincLineSpan
+			if ( i->second.type() == Arinc::StandardWay )
+				return m_cached_type = Arinc::StandardWay;
+	}
+
+	return m_cached_type;
 }
 
-int
+Arinc::Type
 ArincLine::type( const std::string & str ) // static
 {
 	switch ( str.at( 0 ) ) {
@@ -110,7 +125,7 @@ ArincLine::type( const std::string & str ) // static
 				return Arinc::EndOfVolume;
 
 			else
-				return Arinc::Unknown;
+				return Arinc::NoType;
 		}
 	}
 }
@@ -233,27 +248,27 @@ ArincLine::subsection( const std::string & str ) // static
 }
 
 std::string
-ArincLine::getInterval( Arinc::Field field ) const
+ArincLine::getSpan( Arinc::Field field ) const
 {
-	const ArincLineInterval & interval = m_maps[ subsection() ][ field ];
+	const ArincLineSpan & span = m_maps[ subsection() ][ field ];
 
-	if ( ! interval.isValid() ) {
-		printf("interval is invalid\n");
+	if ( ! span.isValid() ) {
+		printf("span is invalid\n");
 		return std::string();
 	}
 
 	std::string str;
 
-	//printf("param = %i, start1 = %i, length1 = %i\n", dataType, interval.start1(), interval.length1() );
+	//printf("param = %i, start1 = %i, length1 = %i\n", dataType, span.start1(), span.length1() );
 
-	if ( interval.haveFirstPart() )
-		str = substr( interval.start1(), interval.length1() );
+	if ( span.haveFirstPart() )
+		str = substr( span.start1(), span.length1() );
 
-	if ( interval.haveSecondPart() )
-		str += substr( interval.start2(), interval.length2() );
+	if ( span.haveSecondPart() )
+		str += substr( span.start2(), span.length2() );
 
-	if ( interval.haveThirdPart() )
-		str += substr( interval.start3(), interval.length3() );
+	if ( span.haveThirdPart() )
+		str += substr( span.start3(), span.length3() );
 
 	return str;
 }
@@ -262,7 +277,7 @@ ArincLine::getInterval( Arinc::Field field ) const
 std::string
 ArincLine::data( Arinc::DataString data ) const
 {
-	return getInterval( data );
+	return getSpan( data );
 }
 */
 
@@ -276,7 +291,7 @@ ArincLine::subsection() const
 int
 ArincLine::data( Arinc::DataInt data ) const
 {
-	const std::string str = getInterval( data );
+	const std::string str = getSpan( data );
 
 	switch ( data ) {
 		case Arinc::Bias:
@@ -290,7 +305,7 @@ ArincLine::data( Arinc::DataInt data ) const
 double
 ArincLine::data( Arinc::DataDouble data ) const
 {
-	const std::string str = getInterval( data );
+	const std::string str = getSpan( data );
 
 	switch ( data ) {
 		case Arinc::MagDev:
@@ -304,7 +319,7 @@ ArincLine::data( Arinc::DataDouble data ) const
 Coordinates
 ArincLine::data( Arinc::DataCoordinates data ) const
 {
-	const std::string str = getInterval( data );
+	const std::string str = getSpan( data );
 
 	if ( str.empty() )
 		return Coordinates();
