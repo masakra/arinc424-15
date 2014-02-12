@@ -43,8 +43,6 @@ class Arinc
 		/*
 		\\	static
 		*/
-
-
 	public:
 		/*! \enum Subsection
 		 *
@@ -106,7 +104,7 @@ class Arinc
 			EndOfFile,
 			EndOfVolume,
 			Standard,		// Standard точечный объект
-			StandardWay,	// Standard объект-путь
+			Way,			// Standard объект-путь
 			Tailored		// должна быть последней \sa ArincLineMap::m_maps
 		};
 
@@ -114,13 +112,20 @@ class Arinc
 			// ArincData::String
 			Undefined = 0,
 
+			Address,		///< Адрес средства связи ФИР/УИР из четырех символов
 			Airport,		///< Код ICAO аэропорта с 2-х символьным кодом зоны
+			AltitDescription,	///< Описание высоты
 			AltitMax,		///< Максимальная высота
 			AltitMin,		///< Минимальная высота
 			AltitMin2,		///< Минимальная высота 2
+			AltitTransition,	///< Высота перехода \sa LevelTransition
+			Angle,			///< Вертикальный угол 5.70
+			ArcRadius,		///< Радиус дуги или окружности
+			Atc,			///< Air Traffic Control (УВД) 5.81
 			Bias,			///< Смещение ILS/DME
 			Border,			///< Код границы (5.18)
 			Comment,		///< Примечание
+			CommType,		///< CommunicationsType - тип станции связи
 			Coordinates,	///< Координаты
 			CourseIb,		///< Курс, заданный Магнитный Путевой Угол (МПУ) на... (inbound)
 			CourseOb,		///< Курс, заданный Магнитный Путевой Угол (МПУ) от... (outbound)
@@ -129,6 +134,7 @@ class Arinc
 			Datum,			///< Код исходного ориентира
 			Direction,		///< Ограничение по направлению 5.115
 			Distance,		///< Расстояние
+			DistanceTime,		///< Расстояние или время 5.27
 			Dme,			///< Идентификотор DME
 			DmeCoordinates,	///< Координаты DME
 			Duplicate,		///< Идентификатор множественности маршрутов в точке (Duplicate Indicator)
@@ -136,25 +142,47 @@ class Arinc
 			EuIndicator,	///< Индикатор ограничения
 			Exceed,			///< Превышение
 			Fix,			///< Идентификатор ППМ
+			FixCenter,		///< Центральная контрольная точка 5.144
 			Frequency,		///< Частота
+			FrequencyUnit,	///< Диапазон частот
 			FreqPrd,		///< Защита частоты
+			GuardTransmit,	///< Приём/передача
+			H24,			///< Круглосуточно Y/N
+			Iata,			///< Код IATA
 			Ident,			///< Идентификатор с 2-х символьным кодом зоны
+			Ifr,			///< Instrumental flight rules
+			Indicator,		///< Индикатор ФИР/УИР
 			Level,			///< Эшелон
+			LevelTransition,	///< Эшелон перехода \sa AltitTransition
 			MagDev,			///< Магнитное склонение
+			MagneticTrue,	///< Magnetic/True индикатор
 			Merit,			///< Чувствительность, показатель качества (был Sens)
+			Modulation,		///< Модуляция
 			Name,			///< Наименование
 			NavClass,		///< Класс навигационного средства
 			Order,			///< Порядок точек в многоточечном объекте
 			ParityCheck,	///< Контроль чётности
+			PathAndTermination,	///< Траектория пути и завершение 5.21
+			PublicMilitary,	///< Public/Military indicator
+			Radar,			///< 5.102
 			RecdNav,		///< Рекомендуемое навигационное средство
 			Region,			///< Код региона (Region code)
+			RemoteFacility,	///< Выносная станция связи
 			Rho,			///< Ро 5.25
 			Rnp,			///< Требуемая навигационная характеристика (Required Navigation Performance)
 			RouteType,		///< Тип маршрута
+			RunwayDistance,	///< Наибольшая длина ВПП
+			Service,		///< Service indicator - индикатор службы связи
+			SignalEmission,	///< Описание ВЧ сигнала
 			Speed,			///< Скорость
+			SpeedLimit,		///< Ограничение скорости
 			Theta,			///< Тэта 5.24
 			Time,			///< Время
+			TimeDayLight,	///< Указатель летнего времени
+			TimeZone,		///< Часовой пояс
+			Transition,		///< Идентификатор перехода
 			Turn,			///< Направление разворота
+			TurnDirectionValid,	///< Необходимость разворота в заданном направлении 5.22
 			WaypointDescription,	///< Код описания ППМ
 			WaypointFormat,	///< Индикатор формата имени (Name format indicator)
 			WaypointType,	///< Тип ППМ

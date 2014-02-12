@@ -42,7 +42,7 @@ class ArincLineMaps
 	private:
 		ArincLineMaps();	// ибо нефиг
 
-		ArincLineMap m_maps[ Arinc::Tailored ];	// last item of Arinc::Subsection
+		ArincLineMap m_map[ Arinc::EO ];	// last item of Arinc::Subsection
 
 	public:
 		ArincLineMap & operator[]( Arinc::Subsection ss );

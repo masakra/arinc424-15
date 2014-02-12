@@ -29,11 +29,27 @@
 #include "ArincLine.h"
 
 ArincLineMap::ArincLineMap()
-	: std::map< Arinc::Field, ArincLineSpan >()
+	: std::map< Arinc::Field, ArincLineSpan >(), m_cachedType( Arinc::NoType )
 {
 	// общие поля для всех подсекций
 
 	( *this )[ Arinc::Cycle ].span( 128, 4 );
 	( *this )[ Arinc::Zone ].span( 1, 3 );
+}
+
+Arinc::Type
+ArincLineMap::type() const
+{
+	if ( m_cachedType != Arinc::NoType )
+		return m_cachedType;
+
+	if ( empty() )
+		return m_cachedType = Arinc::Standard;
+
+	for ( const_iterator i = begin(); i != end(); ++i )
+		if ( ( m_cachedType = i->second.type() ) == Arinc::Way )
+			break;
+
+	return m_cachedType;
 }
 

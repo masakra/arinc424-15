@@ -39,8 +39,21 @@
 
 class ArincLineMap : public std::map< Arinc::Field, ArincLineSpan >
 {
+	private:
+		mutable Arinc::Type m_cachedType;
+
 	public:
 		ArincLineMap();
+
+		/*! \fn Arinc::Type type() const
+		 *
+		 * \brief Тип карты
+		 *
+		 * Возможны два типа: Arinc::Standard и Arinc::StandardWay. Если хотя-бы
+		 * один из спанов имеет тип Arinc::StandardWay, то вся карта иммет тип
+		 * Arinc::StandardWay, иначе Arinc::Standard.
+		 */
+		Arinc::Type type() const;
 };
 
 #endif

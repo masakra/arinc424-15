@@ -40,9 +40,9 @@ class ArincLine : public std::string
 	private:
 		std::string getSpan( Arinc::Field field ) const;
 
-		static ArincLineMaps m_maps;
+		mutable Arinc::Type m_cachedType;
 
-		mutable Arinc::Type m_cached_type;
+		static ArincLineMaps m_maps;
 
 	public:
 		ArincLine();
@@ -58,7 +58,6 @@ class ArincLine : public std::string
 		std::string data( Arinc::Field field ) const;
 
 		const ArincLineMap & map() const;
-
 
 		/*
 		\\	static

@@ -122,13 +122,20 @@ Arinc::fieldName( Field field )
 	static const char * names[] = {
 		0,					// Undefined
 
+		"address",			// Address
 		"airport",			// Airport
+		"altitdesc",		// AltitDescription - описание высоты
 		"altitmax",			// AltitMax
 		"altitmin",			// AltitMin
 		"altitmin2",		// AltitMin2
+		"altittrans",		// AltitTrans
+		"angle",			// Angle - вертикальный угол 5.70
+		"arcrad",			// ArcRadius - радиус дуги или окружности
+		"atc",				// Atc - Air Traffic Control (УВД) 5.81
 		"bias",
 		"border",			// Border - код границы 5.18
 		"comm",				// Comment
+		"commtype",			// CommType - тип станции связи
 		"coordinates",		// Coordinates
 		"courseib",			// CourseIb
 		"courseob",			// CourseOb
@@ -137,6 +144,7 @@ Arinc::fieldName( Field field )
 		"datum",			// Datum
 		"direction",		// Direction - ограничение по направлению 5.115
 		"distance",			// Distance
+		"disttime",			// DistanceTime - расстояние или время
 		"dme",				// Dme
 		"dmecoordinates",	// DmeCoordinates
 		"duplicate",		// Duplicate
@@ -144,25 +152,47 @@ Arinc::fieldName( Field field )
 		"eu",				// EuIndicator
 		"exceed",
 		"fix",				// Fix
+		"fixcenter",		// FixCenter - центральная контрольная точка 5.144
 		"frequency",		// Frequency	numeric( 6,2 )
+		"frequnit",			// FrequencyUnit - диапазон частот
 		"freqprd",
+		"gt",				// GuardTransmit - приём/передача
+		"h24",				// H24 - круглосуточно Y/N
+		"iata",				// Iata - код IATA
 		"ident",			// Ident
+		"ifr",				// Ifr - instrument flight rules
+		"indicator",		// Indicator
 		"level",			// Level - эшелон
+		"leveltrans",		// LevelTransition - эшелон перехода
 		"magdev",			// MagDev		numeric( 4,1 )
+		"magtrue",			// MagneticTrue индикатор
 		"merit",			// Merit
+		"modulation",		// Modulation - модуляция
 		"name",				// Name
 		"navclass",			// NavClass
 		"ord",				// Order
 		"paritycheck",
+		"pathterm",			// PathAndTermination
+		"pubmil",			// PublicMilitary индикатор
+		"radar",			// Radar
 		"recdnav",			// RecdNav - рекомендуемое навигационное средство
 		"region",			// Region
+		"remfac",			// Remote facility
 		"rho",				// Rho 5.25
 		"rnp",				// Required Navigation Performance
 		"routetype",		// RouteType - тип маршрута
+		"rwdistance",		// RunwayDistance - наибольшая длина ВПП
+		"service",			// Service - индикатор службы связи
+		"sigem",			// SignalEmission - описание ВЧ сигнала
 		"speed",			// Speed
+		"speedlim",			// SpeedLimit - ограничение скорости
 		"theta",			// Theta 5.24
 		"time",				// Time
+		"timeday",			// TimeDayLignt
+		"timezone",			// TimeZone
+		"transition",		// Transition - идентификатор перехода 5.11
 		"turn",				// Turn
+		"turnvalid",		// TurnDirectionValid - необходимость разворота в заданном направлении 5.22
 		"wpdesc",			// WaypointDescription
 		"wpformat",			// WaypointFormat
 		"wptype",			// WaypointType

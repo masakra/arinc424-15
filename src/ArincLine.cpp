@@ -26,7 +26,6 @@
 
 #include "ArincLine.h"
 
-
 #include <iostream>
 #include <stdio.h>		// для Win*
 #include <stdlib.h>		// для Win*
@@ -37,19 +36,19 @@
 ArincLineMaps ArincLine::m_maps;
 
 ArincLine::ArincLine()
-	: m_cached_type( Arinc::NoType )
+	: m_cachedType( Arinc::NoType )
 {
 }
 
 ArincLine::ArincLine( const std::string & line )
-	: std::string( line ), m_cached_type( Arinc::NoType )
+	: std::string( line ), m_cachedType( Arinc::NoType )
 {
 }
 
 ArincLine &
 ArincLine::operator=( const std::string & str )
 {
-	m_cached_type = Arinc::NoType;
+	m_cachedType = Arinc::NoType;
 	std::string::operator=( str );
 	return *this;
 }
@@ -69,31 +68,26 @@ ArincLine::map() const
 const ArincLineMap &
 ArincLine::map( Arinc::Subsection ss )
 {
+	//printf("map( %s )\n", Arinc::subsectionAbbr( ss ) );
 	return m_maps[ ss ];
 }
 
 Arinc::Type
 ArincLine::type() const
 {
-	if ( m_cached_type != Arinc::NoType )
-		return m_cached_type;
+	if ( m_cachedType != Arinc::NoType )
+		return m_cachedType;
 
 	if ( size() < 3 )
-		return m_cached_type;	// Arinc::NoType
+		return m_cachedType;	// Arinc::NoType
 
-	m_cached_type = type( *this );	// static function call
+	m_cachedType = type( *this );	// static function call
 
 	// проверка на Arinc::StandardWay
-	// проход по m_maps для поиска интевала с типом Arinc::StandardWay
-	if ( m_cached_type == Arinc::Standard ) {
-		const Arinc::Subsection ss = subsection();
-		for ( ArincLineMap::const_iterator i = m_maps[ ss ].begin(); i != m_maps[ ss ].end(); ++i )
-			// i->second имеет тип IrincLineSpan
-			if ( i->second.type() == Arinc::StandardWay )
-				return m_cached_type = Arinc::StandardWay;
-	}
+	if ( m_cachedType == Arinc::Standard )
+		m_cachedType = m_maps[ subsection() ].type();
 
-	return m_cached_type;
+	return m_cachedType;
 }
 
 Arinc::Type
