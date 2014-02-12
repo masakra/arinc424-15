@@ -197,9 +197,48 @@ ArincLineMaps::ArincLineMaps()
 	m_map[ Arinc::PE ][ Arinc::Angle ].span( 102, 4 );
 	m_map[ Arinc::PE ][ Arinc::FixCenter ].span( 114, 2, 112, 2, 106, 5, Arinc::Way );
 	// PF
-	m_map[ Arinc::PF ][ Arinc::Airport ].span( 10, 2, 6, 4 );
-	m_map[ Arinc::PF ][ Arinc::Ident ].span( 13, 6 );
+	m_map[ Arinc::PF ][ Arinc::Airport ].span( 10, 2, 6, 4, Arinc::Way );
+	m_map[ Arinc::PF ][ Arinc::Ident ].span( 13, 6, Arinc::Way );
 	m_map[ Arinc::PF ][ Arinc::RouteType ].span( 19, 1, Arinc::Way );
+	m_map[ Arinc::PF ][ Arinc::Transition ].span( 20, 5, Arinc::Way );
+	m_map[ Arinc::PF ][ Arinc::Order ].span( 26, 3 );
+	m_map[ Arinc::PF ][ Arinc::Fix ].span( 36, 2, 34, 2, 29, 5 );
+	m_map[ Arinc::PF ][ Arinc::WaypointDescription ].span( 39, 4 );
+	m_map[ Arinc::PF ][ Arinc::Turn ].span( 43 );
+	m_map[ Arinc::PF ][ Arinc::TurnDirectionValid ].span( 49 );
+	m_map[ Arinc::PF ][ Arinc::PathAndTermination ].span( 47, 2 );
+	m_map[ Arinc::PF ][ Arinc::ArcRadius ].span( 56, 6 );
+	m_map[ Arinc::PF ][ Arinc::Theta ].span( 62, 4 );
+	m_map[ Arinc::PF ][ Arinc::Rho ].span( 66, 4 );
+	m_map[ Arinc::PF ][ Arinc::CourseOb ].span( 70, 4 );
+	m_map[ Arinc::PF ][ Arinc::DistanceTime ].span( 74, 4 );
+	m_map[ Arinc::PF ][ Arinc::RecdNav ].span( 78, 2, 54, 2, 50, 4 );
+	m_map[ Arinc::PF ][ Arinc::AltitDescription ].span( 82 );
+	m_map[ Arinc::PF ][ Arinc::Atc ].span( 83 );
+	m_map[ Arinc::PF ][ Arinc::AltitMax ].span( 84, 5 );	// Alt_1
+	m_map[ Arinc::PF ][ Arinc::AltitMin ].span( 89, 5 );	// Alt_2
+	m_map[ Arinc::PF ][ Arinc::AltitTransition ].span( 94, 5 );
+	m_map[ Arinc::PF ][ Arinc::SpeedLimit ].span( 99, 3 );
+	m_map[ Arinc::PF ][ Arinc::Angle ].span( 102, 4 );
+	m_map[ Arinc::PF ][ Arinc::FixCenter ].span( 114, 2, 112, 2, 106, 5, Arinc::Way );
+	// PG
+	m_map[ Arinc::PG ][ Arinc::Airport ].span( 10, 2, 6, 4 );
+	m_map[ Arinc::PG ][ Arinc::Ident ].span( 13, 5 );
+	m_map[ Arinc::PG ][ Arinc::RunwayDistance ].span( 22, 5 );
+	m_map[ Arinc::PG ][ Arinc::Bearing ].span( 27, 4 );
+	m_map[ Arinc::PG ][ Arinc::Coordinates ].span( 32, 19 );
+	m_map[ Arinc::PG ][ Arinc::RunwayGradient ].span( 51, 5 );
+	m_map[ Arinc::PG ][ Arinc::Elevation ].span( 66, 5 );	// Landing Threshold Elevation
+	m_map[ Arinc::PG ][ Arinc::Displacement ].span( 71, 4 );
+	m_map[ Arinc::PG ][ Arinc::CrossingHeight ].span( 75, 2 );	// Threshold Crossing Height
+	m_map[ Arinc::PG ][ Arinc::Width ].span( 77, 3 );
+	m_map[ Arinc::PG ][ Arinc::Ident1 ].span( 85, 1, 81, 4 );
+	m_map[ Arinc::PG ][ Arinc::Stopway ].span( 86, 4 );
+	m_map[ Arinc::PG ][ Arinc::Ident2 ].span( 94, 1, 90, 4 );
+	m_map[ Arinc::PG ][ Arinc::Name ].span( 101, 22 );
+
+
+
 
 
 

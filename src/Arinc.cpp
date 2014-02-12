@@ -132,6 +132,7 @@ Arinc::fieldName( Field field )
 		"angle",			// Angle - вертикальный угол 5.70
 		"arcrad",			// ArcRadius - радиус дуги или окружности
 		"atc",				// Atc - Air Traffic Control (УВД) 5.81
+		"bearing",			// Bearing - пеленг
 		"bias",
 		"border",			// Border - код границы 5.18
 		"comm",				// Comment
@@ -139,10 +140,12 @@ Arinc::fieldName( Field field )
 		"coordinates",		// Coordinates
 		"courseib",			// CourseIb
 		"courseob",			// CourseOb
+		"crosshei",			// Threshold Crossing Height 5.67
 		"crstbl",			// CruisingTable - таблица крейсерских эшелонов 5.134
 		"cycle",			// Cycle
 		"datum",			// Datum
 		"direction",		// Direction - ограничение по направлению 5.115
+		"displacement",		// Threshold Displacement Distance 5.69
 		"distance",			// Distance
 		"disttime",			// DistanceTime - расстояние или время
 		"dme",				// Dme
@@ -150,6 +153,7 @@ Arinc::fieldName( Field field )
 		"duplicate",		// Duplicate
 		"encoding",
 		"eu",				// EuIndicator
+		"elevation",		// Elevation
 		"exceed",
 		"fix",				// Fix
 		"fixcenter",		// FixCenter - центральная контрольная точка 5.144
@@ -160,6 +164,8 @@ Arinc::fieldName( Field field )
 		"h24",				// H24 - круглосуточно Y/N
 		"iata",				// Iata - код IATA
 		"ident",			// Ident
+		"ident1",			// Localizer/MLS/GLS Identifier 1 5.44 5.80
+		"ident2",			// Localizer/MLS/GLS Identifier 2 5.44 5.80
 		"ifr",				// Ifr - instrument flight rules
 		"indicator",		// Indicator
 		"level",			// Level - эшелон
@@ -182,10 +188,12 @@ Arinc::fieldName( Field field )
 		"rnp",				// Required Navigation Performance
 		"routetype",		// RouteType - тип маршрута
 		"rwdistance",		// RunwayDistance - наибольшая длина ВПП
+		"rwgradient",		// RunwayGradient - уклон ВПП 5.212
 		"service",			// Service - индикатор службы связи
 		"sigem",			// SignalEmission - описание ВЧ сигнала
 		"speed",			// Speed
 		"speedlim",			// SpeedLimit - ограничение скорости
+		"stopway",			// Концевая полоса торможения 5.79
 		"theta",			// Theta 5.24
 		"time",				// Time
 		"timeday",			// TimeDayLignt
@@ -197,6 +205,7 @@ Arinc::fieldName( Field field )
 		"wpformat",			// WaypointFormat
 		"wptype",			// WaypointType
 		"wpusage",			// WaypointUsage
+		"width",			// Width - ширина
 		"zone"				// Zone
 	};
 

@@ -90,7 +90,7 @@ class Arinc
 			HA,		///< вертодромы
 			HV,		///< средство связи вертодрома
 			ET,		///< предпочтительные маршруты
-			EO,		///< препятствия на маршруте
+			EO		///< препятствия на маршруте
 			////////////////////////////////////////////////////
 			/// служебные строки файла в формате Arinc424-15 ///
 			////////////////////////////////////////////////////
@@ -122,6 +122,7 @@ class Arinc
 			Angle,			///< Вертикальный угол 5.70
 			ArcRadius,		///< Радиус дуги или окружности
 			Atc,			///< Air Traffic Control (УВД) 5.81
+			Bearing,		///< Bearing - пеленг
 			Bias,			///< Смещение ILS/DME
 			Border,			///< Код границы (5.18)
 			Comment,		///< Примечание
@@ -129,17 +130,20 @@ class Arinc
 			Coordinates,	///< Координаты
 			CourseIb,		///< Курс, заданный Магнитный Путевой Угол (МПУ) на... (inbound)
 			CourseOb,		///< Курс, заданный Магнитный Путевой Угол (МПУ) от... (outbound)
+			CrossingHeight,	///< Threshold Crossing Height 5.67
 			CruisingTable,	///< Таблица крейсерских жшелонов 5.134
 			Cycle,			///< Цикл AIRAC в котором были последние изменения
 			Datum,			///< Код исходного ориентира
 			Direction,		///< Ограничение по направлению 5.115
+			Displacement,	///< Threshold Displacement Distance 5.69
 			Distance,		///< Расстояние
-			DistanceTime,		///< Расстояние или время 5.27
+			DistanceTime,	///< Расстояние или время 5.27
 			Dme,			///< Идентификотор DME
 			DmeCoordinates,	///< Координаты DME
 			Duplicate,		///< Идентификатор множественности маршрутов в точке (Duplicate Indicator)
 			Encoding,		///< Кодировка
 			EuIndicator,	///< Индикатор ограничения
+			Elevation,		///< Landing Threshold Elevation
 			Exceed,			///< Превышение
 			Fix,			///< Идентификатор ППМ
 			FixCenter,		///< Центральная контрольная точка 5.144
@@ -150,6 +154,8 @@ class Arinc
 			H24,			///< Круглосуточно Y/N
 			Iata,			///< Код IATA
 			Ident,			///< Идентификатор с 2-х символьным кодом зоны
+			Ident1,			///< Localizer/MLS/GLS Identifier 1 5.44 5.80
+			Ident2,			///< Localizer/MLS/GLS Identifier 2 5.44 5.80
 			Ifr,			///< Instrumental flight rules
 			Indicator,		///< Индикатор ФИР/УИР
 			Level,			///< Эшелон
@@ -172,10 +178,12 @@ class Arinc
 			Rnp,			///< Требуемая навигационная характеристика (Required Navigation Performance)
 			RouteType,		///< Тип маршрута
 			RunwayDistance,	///< Наибольшая длина ВПП
+			RunwayGradient,	///< Уклон ВПП 5.212
 			Service,		///< Service indicator - индикатор службы связи
 			SignalEmission,	///< Описание ВЧ сигнала
 			Speed,			///< Скорость
 			SpeedLimit,		///< Ограничение скорости
+			Stopway,		///< Концевая полоса торможения 5.79
 			Theta,			///< Тэта 5.24
 			Time,			///< Время
 			TimeDayLight,	///< Указатель летнего времени
@@ -187,6 +195,7 @@ class Arinc
 			WaypointFormat,	///< Индикатор формата имени (Name format indicator)
 			WaypointType,	///< Тип ППМ
 			WaypointUsage,	///< Использование ППМ на маршруте, по сути тип воздушного пространства
+			Width,			///< Ширина
 			Zone,			///< 3-x символьное обозначение зоны
 			// ArincData::Coordinates
 
