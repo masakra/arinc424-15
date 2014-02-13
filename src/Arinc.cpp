@@ -160,6 +160,8 @@ Arinc::fieldName( Field field )
 		"frequency",		// Frequency	numeric( 6,2 )
 		"frequnit",			// FrequencyUnit - диапазон частот
 		"freqprd",
+		"gscoordinates",	// GsCoordinates - Glide Slope Coordinates - координаты глиссадного радиомаяка
+		"gspos",			// GsPosition - Glide Slope Position - положение глиссадного радиомаяка
 		"gt",				// GuardTransmit - приём/передача
 		"h24",				// H24 - круглосуточно Y/N
 		"iata",				// Iata - код IATA
@@ -170,6 +172,8 @@ Arinc::fieldName( Field field )
 		"indicator",		// Indicator
 		"level",			// Level - эшелон
 		"leveltrans",		// LevelTransition - эшелон перехода
+		"locpos",			// Localizer Position - позиция курсового радиомаяка
+		"locref",			// Localizer Reference - смещение курсового радиомаяка
 		"magdev",			// MagDev		numeric( 4,1 )
 		"magtrue",			// MagneticTrue индикатор
 		"merit",			// Merit
@@ -187,6 +191,7 @@ Arinc::fieldName( Field field )
 		"rho",				// Rho 5.25
 		"rnp",				// Required Navigation Performance
 		"routetype",		// RouteType - тип маршрута
+		"runway",			// Runway - идентификатор ВПП
 		"rwdistance",		// RunwayDistance - наибольшая длина ВПП
 		"rwgradient",		// RunwayGradient - уклон ВПП 5.212
 		"service",			// Service - индикатор службы связи

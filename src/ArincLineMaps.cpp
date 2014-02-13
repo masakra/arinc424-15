@@ -231,11 +231,30 @@ ArincLineMaps::ArincLineMaps()
 	m_map[ Arinc::PG ][ Arinc::Elevation ].span( 66, 5 );	// Landing Threshold Elevation
 	m_map[ Arinc::PG ][ Arinc::Displacement ].span( 71, 4 );
 	m_map[ Arinc::PG ][ Arinc::CrossingHeight ].span( 75, 2 );	// Threshold Crossing Height
-	m_map[ Arinc::PG ][ Arinc::Width ].span( 77, 3 );
+	m_map[ Arinc::PG ][ Arinc::Width ].span( 77, 3 );		// 
 	m_map[ Arinc::PG ][ Arinc::Ident1 ].span( 85, 1, 81, 4 );
 	m_map[ Arinc::PG ][ Arinc::Stopway ].span( 86, 4 );
 	m_map[ Arinc::PG ][ Arinc::Ident2 ].span( 94, 1, 90, 4 );
 	m_map[ Arinc::PG ][ Arinc::Name ].span( 101, 22 );
+	// PI
+	m_map[ Arinc::PI ][ Arinc::Airport ].span( 10, 2, 6, 4 );
+	m_map[ Arinc::PI ][ Arinc::Ident ].span( 17, 1, 13, 4 );		// как Ident1 и Ident2
+	m_map[ Arinc::PI ][ Arinc::Frequency ].span( 22, 5 );
+	m_map[ Arinc::PI ][ Arinc::Runway ].span( 27, 5 );
+	m_map[ Arinc::PI ][ Arinc::Coordinates ].span( 32, 19 );
+	m_map[ Arinc::PI ][ Arinc::Bearing ].span( 51, 4 );
+	m_map[ Arinc::PI ][ Arinc::GsCoordinates ].span( 55, 19 );
+	m_map[ Arinc::PI ][ Arinc::LocalizerPosition ].span( 74, 4 );
+	m_map[ Arinc::PI ][ Arinc::LocalizerReference ].span( 78 );
+	m_map[ Arinc::PI ][ Arinc::GsPosition ].span( 79, 4 );
+	m_map[ Arinc::PI ][ Arinc::Width ].span( 83, 4 );	// Localizer width 5.51
+	m_map[ Arinc::PI ][ Arinc::Angle ].span( 87, 3 );	// Glide Slope angle
+	m_map[ Arinc::PI ][ Arinc::MagDev ].span( 90, 5 );
+	m_map[ Arinc::PI ][ Arinc::CrossingHeight ].span( 95, 2 );
+	m_map[ Arinc::PI ][ Arinc::Elevation ].span( 97, 5 );
+
+
+
 
 
 

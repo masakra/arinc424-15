@@ -32,8 +32,6 @@
 #ifndef ARINC_H
 #define ARINC_H
 
-//#include <Geo>
-
 class ArincObjectInterface;
 
 class Arinc
@@ -150,6 +148,8 @@ class Arinc
 			Frequency,		///< Частота
 			FrequencyUnit,	///< Диапазон частот
 			FreqPrd,		///< Защита частоты
+			GsCoordinates,	///< Glide Slope Coordinates - координаты глиссадного радиомаяка
+			GsPosition,		///< Glide Slope Position - положение глиссадного радиомаяка
 			GuardTransmit,	///< Приём/передача
 			H24,			///< Круглосуточно Y/N
 			Iata,			///< Код IATA
@@ -160,6 +160,8 @@ class Arinc
 			Indicator,		///< Индикатор ФИР/УИР
 			Level,			///< Эшелон
 			LevelTransition,	///< Эшелон перехода \sa AltitTransition
+			LocalizerPosition,	///< Позиция курсового радиомаяка
+			LocalizerReference,	///< Смещение курсового радиомаяка
 			MagDev,			///< Магнитное склонение
 			MagneticTrue,	///< Magnetic/True индикатор
 			Merit,			///< Чувствительность, показатель качества (был Sens)
@@ -177,6 +179,7 @@ class Arinc
 			Rho,			///< Ро 5.25
 			Rnp,			///< Требуемая навигационная характеристика (Required Navigation Performance)
 			RouteType,		///< Тип маршрута
+			Runway,			///< Идентификатор ВПП
 			RunwayDistance,	///< Наибольшая длина ВПП
 			RunwayGradient,	///< Уклон ВПП 5.212
 			Service,		///< Service indicator - индикатор службы связи
