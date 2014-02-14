@@ -121,6 +121,11 @@ class Arinc
 			ArcRadius,		///< Радиус дуги или окружности
 			Atc,			///< Air Traffic Control (УВД) 5.81
 			Bearing,		///< Bearing - пеленг
+			Bearing1,
+			Bearing2,
+			Bearing3,
+			Bearing4,
+			Bearing5,
 			Bias,			///< Смещение ILS/DME
 			Border,			///< Код границы (5.18)
 			Comment,		///< Примечание
@@ -135,6 +140,8 @@ class Arinc
 			Direction,		///< Ограничение по направлению 5.115
 			Displacement,	///< Threshold Displacement Distance 5.69
 			Distance,		///< Расстояние
+			DistanceCommunications,	///< Ограничение расстояния для станции 5.188
+			DistanceDescription, ///< Описание расстояния 5.187
 			DistanceTime,	///< Расстояние или время 5.27
 			Dme,			///< Идентификотор DME
 			DmeCoordinates,	///< Координаты DME
@@ -143,6 +150,7 @@ class Arinc
 			EuIndicator,	///< Индикатор ограничения
 			Elevation,		///< Landing Threshold Elevation
 			Exceed,			///< Превышение
+			Facility,		///< Facility Characteristics - 5.93
 			Fix,			///< Идентификатор ППМ
 			FixCenter,		///< Центральная контрольная точка 5.144
 			Frequency,		///< Частота
@@ -152,10 +160,16 @@ class Arinc
 			GsPosition,		///< Glide Slope Position - положение глиссадного радиомаяка
 			GuardTransmit,	///< Приём/передача
 			H24,			///< Круглосуточно Y/N
+			Height1,
+			Height2,
+			Height3,
+			Height4,
+			Height5,
 			Iata,			///< Код IATA
 			Ident,			///< Идентификатор с 2-х символьным кодом зоны
 			Ident1,			///< Localizer/MLS/GLS Identifier 1 5.44 5.80
 			Ident2,			///< Localizer/MLS/GLS Identifier 2 5.44 5.80
+			IdentRls,		///< Идентификатор РЛС
 			Ifr,			///< Instrumental flight rules
 			Indicator,		///< Индикатор ФИР/УИР
 			Level,			///< Эшелон
@@ -164,8 +178,10 @@ class Arinc
 			LocalizerReference,	///< Смещение курсового радиомаяка
 			MagDev,			///< Магнитное склонение
 			MagneticTrue,	///< Magnetic/True индикатор
+			MarkerType,		///< Тип маркерного маяка 5.99
 			Merit,			///< Чувствительность, показатель качества (был Sens)
 			Modulation,		///< Модуляция
+			MultipleCode,	///< Код множественности 5.130
 			Name,			///< Наименование
 			NavClass,		///< Класс навигационного средства
 			Order,			///< Порядок точек в многоточечном объекте
@@ -173,15 +189,19 @@ class Arinc
 			PathAndTermination,	///< Траектория пути и завершение 5.21
 			PublicMilitary,	///< Public/Military indicator
 			Radar,			///< 5.102
+			RadiusLimit,	///< Максимальный радиус 5.145
 			RecdNav,		///< Рекомендуемое навигационное средство
 			Region,			///< Код региона (Region code)
 			RemoteFacility,	///< Выносная станция связи
 			Rho,			///< Ро 5.25
+			RlsCoordinates,	///< Координаты РЛС
 			Rnp,			///< Требуемая навигационная характеристика (Required Navigation Performance)
 			RouteType,		///< Тип маршрута
 			Runway,			///< Идентификатор ВПП
 			RunwayDistance,	///< Наибольшая длина ВПП
 			RunwayGradient,	///< Уклон ВПП 5.212
+			SectorFacility,	///< Навигационное средство сектора 5.185
+			Sectorization,	///< Разделение на сектора 5.183
 			Service,		///< Service indicator - индикатор службы связи
 			SignalEmission,	///< Описание ВЧ сигнала
 			Speed,			///< Скорость

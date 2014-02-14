@@ -252,14 +252,60 @@ ArincLineMaps::ArincLineMaps()
 	m_map[ Arinc::PI ][ Arinc::MagDev ].span( 90, 5 );
 	m_map[ Arinc::PI ][ Arinc::CrossingHeight ].span( 95, 2 );
 	m_map[ Arinc::PI ][ Arinc::Elevation ].span( 97, 5 );
-
-
-
-
-
-
-
-
+	// PL
+	// PM
+	m_map[ Arinc::PM ][ Arinc::Airport ].span( 10, 2, 6, 4 );
+	m_map[ Arinc::PM ][ Arinc::Ident ].span( 13, 4 );
+	m_map[ Arinc::PM ][ Arinc::MarkerType ].span( 17, 3 );
+	m_map[ Arinc::PM ][ Arinc::Frequency ].span( 22, 5 );
+	m_map[ Arinc::PM ][ Arinc::Runway ].span( 27, 5 );
+	m_map[ Arinc::PM ][ Arinc::Coordinates ].span( 32, 19 );
+	m_map[ Arinc::PM ][ Arinc::Bearing ].span( 51, 4 );	// малая ось пеленга
+	m_map[ Arinc::PM ][ Arinc::RlsCoordinates ].span( 55, 19 );
+	m_map[ Arinc::PM ][ Arinc::NavClass ].span( 74, 5 );
+	m_map[ Arinc::PM ][ Arinc::Facility ].span( 79, 5 );
+	m_map[ Arinc::PM ][ Arinc::IdentRls ].span( 84, 4 );
+	m_map[ Arinc::PM ][ Arinc::MagDev ].span( 90, 5 );
+	m_map[ Arinc::PM ][ Arinc::Elevation ].span( 97, 5 );
+	// PS
+	m_map[ Arinc::PS ][ Arinc::Airport ].span( 10, 2, 6, 4 );
+	m_map[ Arinc::PS ][ Arinc::FixCenter ].span( 20, 2, 18, 2, 13, 5 );
+	m_map[ Arinc::PS ][ Arinc::MultipleCode ].span( 22, 1 );
+	m_map[ Arinc::PS ][ Arinc::RadiusLimit ].span( 40, 2 );
+	m_map[ Arinc::PS ][ Arinc::Bearing1 ].span( 42, 3 );
+	m_map[ Arinc::PS ][ Arinc::Height1 ].span( 45, 3 );
+	m_map[ Arinc::PS ][ Arinc::Bearing2 ].span( 48, 3 );
+	m_map[ Arinc::PS ][ Arinc::Height2 ].span( 51, 3 );
+	m_map[ Arinc::PS ][ Arinc::Bearing3 ].span( 54, 3 );
+	m_map[ Arinc::PS ][ Arinc::Height3 ].span( 57, 3 );
+	m_map[ Arinc::PS ][ Arinc::Bearing4 ].span( 60, 3 );
+	m_map[ Arinc::PS ][ Arinc::Height4 ].span( 63, 3 );
+	m_map[ Arinc::PS ][ Arinc::Bearing5 ].span( 66, 3 );
+	m_map[ Arinc::PS ][ Arinc::Height5 ].span( 69, 3 );
+	m_map[ Arinc::PS ][ Arinc::MagneticTrue ].span( 72 );
+	// PV
+	m_map[ Arinc::PV ][ Arinc::Airport ].span( 10, 2, 6, 4 );
+	m_map[ Arinc::PV ][ Arinc::CommType ].span( 13, 3 );
+	m_map[ Arinc::PV ][ Arinc::Frequency ].span( 16, 7 );
+	m_map[ Arinc::PV ][ Arinc::GuardTransmit ].span( 23 );
+	m_map[ Arinc::PV ][ Arinc::FrequencyUnit ].span( 24 );
+	m_map[ Arinc::PV ][ Arinc::Service ].span( 26, 3 );
+	m_map[ Arinc::PV ][ Arinc::Radar ].span( 29 );
+	m_map[ Arinc::PV ][ Arinc::Modulation ].span( 30 );
+	m_map[ Arinc::PV ][ Arinc::SignalEmission ].span( 31 );
+	m_map[ Arinc::PV ][ Arinc::Coordinates ].span( 32, 19 );
+	m_map[ Arinc::PV ][ Arinc::MagDev ].span( 51, 5 );
+	m_map[ Arinc::PV ][ Arinc::Elevation ].span( 56, 5 );
+	m_map[ Arinc::PV ][ Arinc::H24 ].span( 61 );
+	m_map[ Arinc::PV ][ Arinc::Sectorization ].span( 62, 6 );
+	m_map[ Arinc::PV ][ Arinc::AltitDescription ].span( 68 );
+	m_map[ Arinc::PV ][ Arinc::AltitMax ].span( 69, 5 );
+	m_map[ Arinc::PV ][ Arinc::AltitMin ].span( 74, 5 );
+	m_map[ Arinc::PV ][ Arinc::SectorFacility ].span( 85, 2, 83, 2, 79, 4 );
+	m_map[ Arinc::PV ][ Arinc::DistanceDescription ].span( 87 );
+	m_map[ Arinc::PV ][ Arinc::DistanceCommunications ].span( 88, 2 );
+	m_map[ Arinc::EV ][ Arinc::RemoteFacility ].span( 96, 2, 94, 2, 90, 4 );
+	m_map[ Arinc::EV ][ Arinc::Name ].span( 98, 25 );
 
 
 

@@ -133,6 +133,11 @@ Arinc::fieldName( Field field )
 		"arcrad",			// ArcRadius - радиус дуги или окружности
 		"atc",				// Atc - Air Traffic Control (УВД) 5.81
 		"bearing",			// Bearing - пеленг
+		"bear1",			// Bearing1
+		"bear2",			// Bearing2
+		"bear3",			// Bearing3
+		"bear4",			// Bearing4
+		"bear5",			// Bearing5
 		"bias",
 		"border",			// Border - код границы 5.18
 		"comm",				// Comment
@@ -147,6 +152,8 @@ Arinc::fieldName( Field field )
 		"direction",		// Direction - ограничение по направлению 5.115
 		"displacement",		// Threshold Displacement Distance 5.69
 		"distance",			// Distance
+		"distcomm",			// DistanceCommunication - ограничение расстояния для станции 5.188
+		"distdesc",			// DistanceDescription - описание расстояния 5.187
 		"disttime",			// DistanceTime - расстояние или время
 		"dme",				// Dme
 		"dmecoordinates",	// DmeCoordinates
@@ -155,6 +162,7 @@ Arinc::fieldName( Field field )
 		"eu",				// EuIndicator
 		"elevation",		// Elevation
 		"exceed",
+		"facility",			// Facility 5.93
 		"fix",				// Fix
 		"fixcenter",		// FixCenter - центральная контрольная точка 5.144
 		"frequency",		// Frequency	numeric( 6,2 )
@@ -164,10 +172,16 @@ Arinc::fieldName( Field field )
 		"gspos",			// GsPosition - Glide Slope Position - положение глиссадного радиомаяка
 		"gt",				// GuardTransmit - приём/передача
 		"h24",				// H24 - круглосуточно Y/N
+		"heig1",			// Height1
+		"heig2",			// Height2
+		"heig3",			// Height3
+		"heig4",			// Height4
+		"heig5",			// Height5
 		"iata",				// Iata - код IATA
 		"ident",			// Ident
 		"ident1",			// Localizer/MLS/GLS Identifier 1 5.44 5.80
 		"ident2",			// Localizer/MLS/GLS Identifier 2 5.44 5.80
+		"identrls",			// IdentRls - идентификатор РЛС
 		"ifr",				// Ifr - instrument flight rules
 		"indicator",		// Indicator
 		"level",			// Level - эшелон
@@ -176,8 +190,10 @@ Arinc::fieldName( Field field )
 		"locref",			// Localizer Reference - смещение курсового радиомаяка
 		"magdev",			// MagDev		numeric( 4,1 )
 		"magtrue",			// MagneticTrue индикатор
+		"markertype",		// MarkerType - тип маркерного маяка 5.99
 		"merit",			// Merit
 		"modulation",		// Modulation - модуляция
+		"mltcode",			// MultipleCode - код множественности
 		"name",				// Name
 		"navclass",			// NavClass
 		"ord",				// Order
@@ -185,15 +201,19 @@ Arinc::fieldName( Field field )
 		"pathterm",			// PathAndTermination
 		"pubmil",			// PublicMilitary индикатор
 		"radar",			// Radar
+		"radlim",			// Radius Limit - максимальный радиус 5.145
 		"recdnav",			// RecdNav - рекомендуемое навигационное средство
 		"region",			// Region
 		"remfac",			// Remote facility
 		"rho",				// Rho 5.25
+		"rlscoordinates",	// Координаты РЛС
 		"rnp",				// Required Navigation Performance
 		"routetype",		// RouteType - тип маршрута
 		"runway",			// Runway - идентификатор ВПП
 		"rwdistance",		// RunwayDistance - наибольшая длина ВПП
 		"rwgradient",		// RunwayGradient - уклон ВПП 5.212
+		"secfac",			// SectorFacility - навигационное средство сектора 5.185
+		"sector",			// Sectorization 5.183
 		"service",			// Service - индикатор службы связи
 		"sigem",			// SignalEmission - описание ВЧ сигнала
 		"speed",			// Speed
