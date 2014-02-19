@@ -124,12 +124,19 @@ Arinc::fieldName( Field field )
 
 		"address",			// Address
 		"airport",			// Airport
+		"asclass",			// AirspaceClass - класс воздушного пространства 5.215
+		"astype",			// AirspaceType - тип воздушного пространства 5.213
 		"altitdesc",		// AltitDescription - описание высоты
 		"altitmax",			// AltitMax
+		"altitmaxunit",		// AltitMaxUnit
 		"altitmin",			// AltitMin
 		"altitmin2",		// AltitMin2
+		"altitminunit",		// AltitMinUnit
 		"altittrans",		// AltitTrans
 		"angle",			// Angle - вертикальный угол 5.70
+		"arcbear",			// ArcBearing - пеленг дуги 5.120
+		"arccoordinates",	// ArcCoordinates
+		"arcdist",			// ArcDistance - длина дуги 5.119
 		"arcrad",			// ArcRadius - радиус дуги или окружности
 		"atc",				// Atc - Air Traffic Control (УВД) 5.81
 		"bearing",			// Bearing - пеленг
@@ -140,6 +147,7 @@ Arinc::fieldName( Field field )
 		"bear5",			// Bearing5
 		"bias",
 		"border",			// Border - код границы 5.18
+		"boundary",			// Boundary - тип линии границы 5.118
 		"comm",				// Comment
 		"commtype",			// CommType - тип станции связи
 		"coordinates",		// Coordinates
@@ -196,6 +204,7 @@ Arinc::fieldName( Field field )
 		"mltcode",			// MultipleCode - код множественности
 		"name",				// Name
 		"navclass",			// NavClass
+		"notam",			// Notam
 		"ord",				// Order
 		"paritycheck",
 		"pathterm",			// PathAndTermination
@@ -204,6 +213,7 @@ Arinc::fieldName( Field field )
 		"radlim",			// Radius Limit - максимальный радиус 5.145
 		"recdnav",			// RecdNav - рекомендуемое навигационное средство
 		"region",			// Region
+		"rnp",				// RequestedNavPerformance - требуемая навигационная характеристика - 5.211
 		"remfac",			// Remote facility
 		"rho",				// Rho 5.25
 		"rlscoordinates",	// Координаты РЛС
@@ -221,6 +231,7 @@ Arinc::fieldName( Field field )
 		"stopway",			// Концевая полоса торможения 5.79
 		"theta",			// Theta 5.24
 		"time",				// Time
+		"timecode",			// TimeCode - временной код - 5.131
 		"timeday",			// TimeDayLignt
 		"timezone",			// TimeZone
 		"transition",		// Transition - идентификатор перехода 5.11

@@ -95,7 +95,7 @@ class Arinc
 		};
 
 		enum Type {
-			NoType,			///< Нет типа
+			NoType = 0,			///< Нет типа
 			VolumeHeader,
 			Header1,
 			Header2,
@@ -112,12 +112,19 @@ class Arinc
 
 			Address,		///< Адрес средства связи ФИР/УИР из четырех символов
 			Airport,		///< Код ICAO аэропорта с 2-х символьным кодом зоны
+			AirspaceClass,	///< Класс воздушного пространства 5.215
+			AirspaceType,	///< Тип воздушного пространства 5.213
 			AltitDescription,	///< Описание высоты
 			AltitMax,		///< Максимальная высота
+			AltitMaxUnit,	///< Начало отсчёта максимальной высоты 5.133
 			AltitMin,		///< Минимальная высота
 			AltitMin2,		///< Минимальная высота 2
+			AltitMinUnit,	///< Начало отсчёта минимальной высоты 5.133
 			AltitTransition,	///< Высота перехода \sa LevelTransition
 			Angle,			///< Вертикальный угол 5.70
+			ArcBearing,		///< Пеленг дуги 5.120
+			ArcCoordinates,	///< Координаты начала дуги
+			ArcDistance,	///< Длина дуги 5.119
 			ArcRadius,		///< Радиус дуги или окружности
 			Atc,			///< Air Traffic Control (УВД) 5.81
 			Bearing,		///< Bearing - пеленг
@@ -128,6 +135,7 @@ class Arinc
 			Bearing5,
 			Bias,			///< Смещение ILS/DME
 			Border,			///< Код границы (5.18)
+			Boundary,		///< Тип линии границы 5.118
 			Comment,		///< Примечание
 			CommType,		///< CommunicationsType - тип станции связи
 			Coordinates,	///< Координаты
@@ -184,6 +192,7 @@ class Arinc
 			MultipleCode,	///< Код множественности 5.130
 			Name,			///< Наименование
 			NavClass,		///< Класс навигационного средства
+			Notam,			///< Нотам
 			Order,			///< Порядок точек в многоточечном объекте
 			ParityCheck,	///< Контроль чётности
 			PathAndTermination,	///< Траектория пути и завершение 5.21
@@ -192,6 +201,7 @@ class Arinc
 			RadiusLimit,	///< Максимальный радиус 5.145
 			RecdNav,		///< Рекомендуемое навигационное средство
 			Region,			///< Код региона (Region code)
+			RequiredNavPerformance,	///< Требуемая навигационная характеристика - 5.211
 			RemoteFacility,	///< Выносная станция связи
 			Rho,			///< Ро 5.25
 			RlsCoordinates,	///< Координаты РЛС
@@ -209,6 +219,7 @@ class Arinc
 			Stopway,		///< Концевая полоса торможения 5.79
 			Theta,			///< Тэта 5.24
 			Time,			///< Время
+			TimeCode,		///< Временной код - 5.131
 			TimeDayLight,	///< Указатель летнего времени
 			TimeZone,		///< Часовой пояс
 			Transition,		///< Идентификатор перехода

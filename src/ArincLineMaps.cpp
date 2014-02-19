@@ -306,6 +306,35 @@ ArincLineMaps::ArincLineMaps()
 	m_map[ Arinc::PV ][ Arinc::DistanceCommunications ].span( 88, 2 );
 	m_map[ Arinc::EV ][ Arinc::RemoteFacility ].span( 96, 2, 94, 2, 90, 4 );
 	m_map[ Arinc::EV ][ Arinc::Name ].span( 98, 25 );
+	// PN
+	m_map[ Arinc::PN ][ Arinc::Airport ].span( 10, 2, 6, 4 );
+	m_map[ Arinc::PN ][ Arinc::Ident ].span( 19, 2, 13, 4 );
+	m_map[ Arinc::PN ][ Arinc::Frequency ].span( 22, 5 );
+	m_map[ Arinc::PN ][ Arinc::NavClass ].span( 27, 5 );
+	m_map[ Arinc::PN ][ Arinc::Coordinates ].span( 32, 19 );
+	m_map[ Arinc::PN ][ Arinc::MagDev ].span( 74, 5 );
+	m_map[ Arinc::PN ][ Arinc::Datum ].span( 90, 3 );
+	m_map[ Arinc::PN ][ Arinc::Name ].span( 93, 30 );
+	// UC
+	m_map[ Arinc::UC ][ Arinc::AirspaceType ].span( 8, 1, Arinc::Way );
+	m_map[ Arinc::UC ][ Arinc::FixCenter ].span( 14, 2, 6, 2, 9, 5, Arinc::Way );
+	m_map[ Arinc::UC ][ Arinc::AirspaceClass ].span( 16, 1, Arinc::Way );
+	m_map[ Arinc::UC ][ Arinc::MultipleCode ].span( 19, 1, Arinc::Way );
+	m_map[ Arinc::UC ][ Arinc::Order ].span( 20, 4 );
+	m_map[ Arinc::UC ][ Arinc::Level ].span( 25, 1, Arinc::Way );
+	m_map[ Arinc::UC ][ Arinc::TimeCode ].span( 26, 1, Arinc::Way );
+	m_map[ Arinc::UC ][ Arinc::Notam ].span( 27, 1, Arinc::Way );
+	m_map[ Arinc::UC ][ Arinc::Boundary ].span( 30, 2 );
+	m_map[ Arinc::UC ][ Arinc::Coordinates ].span( 32, 19 );
+	m_map[ Arinc::UC ][ Arinc::ArcCoordinates ].span( 51, 19 );
+	m_map[ Arinc::UC ][ Arinc::ArcDistance ].span( 70, 4 );
+	m_map[ Arinc::UC ][ Arinc::ArcBearing ].span( 74, 4 );
+	m_map[ Arinc::UC ][ Arinc::RequiredNavPerformance ].span( 78, 3 );
+	m_map[ Arinc::UC ][ Arinc::AltitMin ].span( 81, 5, Arinc::Way );
+	m_map[ Arinc::UC ][ Arinc::AltitMinUnit ].span( 86, 1, Arinc::Way );
+	m_map[ Arinc::UC ][ Arinc::AltitMax ].span( 87, 5, Arinc::Way );
+	m_map[ Arinc::UC ][ Arinc::AltitMaxUnit ].span( 92, 1, Arinc::Way );
+	m_map[ Arinc::UC ][ Arinc::Name ].span( 93, 30, Arinc::Way );
 
 
 
