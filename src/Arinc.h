@@ -174,6 +174,7 @@ class Arinc
 			Height4,
 			Height5,
 			Iata,			///< Код IATA
+			Icao,			///< Код ICAO
 			Ident,			///< Идентификатор с 2-х символьным кодом зоны
 			Ident1,			///< Localizer/MLS/GLS Identifier 1 5.44 5.80
 			Ident2,			///< Localizer/MLS/GLS Identifier 2 5.44 5.80
@@ -203,6 +204,7 @@ class Arinc
 			Region,			///< Код региона (Region code)
 			RequiredNavPerformance,	///< Требуемая навигационная характеристика - 5.211
 			RemoteFacility,	///< Выносная станция связи
+			RestrictiveType,///< Тип ограничения воздушного пространства 2.128
 			Rho,			///< Ро 5.25
 			RlsCoordinates,	///< Координаты РЛС
 			Rnp,			///< Требуемая навигационная характеристика (Required Navigation Performance)

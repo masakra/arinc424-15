@@ -186,6 +186,7 @@ Arinc::fieldName( Field field )
 		"heig4",			// Height4
 		"heig5",			// Height5
 		"iata",				// Iata - код IATA
+		"icao",				// Icao - код ICAO 5.14
 		"ident",			// Ident
 		"ident1",			// Localizer/MLS/GLS Identifier 1 5.44 5.80
 		"ident2",			// Localizer/MLS/GLS Identifier 2 5.44 5.80
@@ -215,6 +216,7 @@ Arinc::fieldName( Field field )
 		"region",			// Region
 		"rnp",				// RequestedNavPerformance - требуемая навигационная характеристика - 5.211
 		"remfac",			// Remote facility
+		"resttype",			// RestrictiveType - тип ограничения воздушного пространства 5.128
 		"rho",				// Rho 5.25
 		"rlscoordinates",	// Координаты РЛС
 		"rnp",				// Required Navigation Performance
