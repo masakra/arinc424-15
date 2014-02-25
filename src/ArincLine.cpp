@@ -177,6 +177,9 @@ ArincLine::subsection( const std::string & str ) // static
 			}
 
 		case 'P':
+			if ( str.at( 5 ) == 'N' )
+				return Arinc::PN;
+
 			switch ( str.at( 12 ) ) {		// section subcode
 				case 'A':
 					return Arinc::PA;
@@ -198,8 +201,8 @@ ArincLine::subsection( const std::string & str ) // static
 					return Arinc::PL;
 				case 'M':
 					return Arinc::PM;
-				case 'N':
-					return Arinc::PN;
+				//case 'N':
+					//return Arinc::PN;
 				case 'S':
 					return Arinc::PS;
 				case 'V':

@@ -354,7 +354,26 @@ ArincLineMaps::ArincLineMaps()
 	m_map[ Arinc::UR ][ Arinc::AltitMax ].span( 87, 5, Arinc::Way );
 	m_map[ Arinc::UR ][ Arinc::AltitMaxUnit ].span( 92, 1, Arinc::Way );
 	m_map[ Arinc::UR ][ Arinc::Name ].span( 93, 30, Arinc::Way );
-
+	// UF
+	m_map[ Arinc::UF ][ Arinc::Ident ].span( 6, 4, Arinc::Way );
+	m_map[ Arinc::UF ][ Arinc::Address ].span( 10, 4, Arinc::Way );
+	m_map[ Arinc::UF ][ Arinc::Indicator ].span( 14, 1, Arinc::Way );
+	m_map[ Arinc::UF ][ Arinc::Order ].span( 15, 4 );
+	m_map[ Arinc::UF ][ Arinc::NearFir ].span( 20, 4 );
+	m_map[ Arinc::UF ][ Arinc::NearUir ].span( 20, 4 );
+	m_map[ Arinc::UF ][ Arinc::SpeedUnit ].span( 28, 1, Arinc::Way );
+	m_map[ Arinc::UF ][ Arinc::HeightUnit ].span( 29, 1, Arinc::Way );
+	m_map[ Arinc::UF ][ Arinc::EntryReport ].span( 30, 1, Arinc::Way );
+	m_map[ Arinc::UF ][ Arinc::Boundary ].span( 32, 2 );
+	m_map[ Arinc::UF ][ Arinc::Coordinates ].span( 34, 19 );
+	m_map[ Arinc::UF ][ Arinc::ArcCoordinates ].span( 53, 19 );
+	m_map[ Arinc::UF ][ Arinc::ArcDistance ].span( 72, 4 );
+	m_map[ Arinc::UF ][ Arinc::ArcBearing ].span( 76, 4 );
+	m_map[ Arinc::UF ][ Arinc::FirLimitUpper ].span( 80, 5, Arinc::Way );
+	m_map[ Arinc::UF ][ Arinc::UirLimitLower ].span( 85, 5, Arinc::Way );
+	m_map[ Arinc::UF ][ Arinc::UirLimitUpper ].span( 90, 5, Arinc::Way );
+	m_map[ Arinc::UF ][ Arinc::CruisingTable ].span( 95, 2, Arinc::Way );
+	m_map[ Arinc::UF ][ Arinc::Name ].span( 98, 25, Arinc::Way );
 
 	/*
 	// Volume Header

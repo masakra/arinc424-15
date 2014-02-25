@@ -142,7 +142,7 @@ class Arinc
 			CourseIb,		///< Курс, заданный Магнитный Путевой Угол (МПУ) на... (inbound)
 			CourseOb,		///< Курс, заданный Магнитный Путевой Угол (МПУ) от... (outbound)
 			CrossingHeight,	///< Threshold Crossing Height 5.67
-			CruisingTable,	///< Таблица крейсерских жшелонов 5.134
+			CruisingTable,	///< Таблица крейсерских эшелонов 5.134
 			Cycle,			///< Цикл AIRAC в котором были последние изменения
 			Datum,			///< Код исходного ориентира
 			Direction,		///< Ограничение по направлению 5.115
@@ -157,8 +157,10 @@ class Arinc
 			Encoding,		///< Кодировка
 			EuIndicator,	///< Индикатор ограничения
 			Elevation,		///< Landing Threshold Elevation
+			EntryReport,	///< Входное донесение 5.124
 			Exceed,			///< Превышение
 			Facility,		///< Facility Characteristics - 5.93
+			FirLimitUpper,	///< Верхняя граница ФИР 5.121
 			Fix,			///< Идентификатор ППМ
 			FixCenter,		///< Центральная контрольная точка 5.144
 			Frequency,		///< Частота
@@ -173,6 +175,7 @@ class Arinc
 			Height3,
 			Height4,
 			Height5,
+			HeightUnit,		///< Единица измерения высоты 5.123
 			Iata,			///< Код IATA
 			Icao,			///< Код ICAO
 			Ident,			///< Идентификатор с 2-х символьным кодом зоны
@@ -193,6 +196,8 @@ class Arinc
 			MultipleCode,	///< Код множественности 5.130
 			Name,			///< Наименование
 			NavClass,		///< Класс навигационного средства
+			NearFir,		///< Ближайший ФИР
+			NearUir,		///< Ближайший УИР
 			Notam,			///< Нотам
 			Order,			///< Порядок точек в многоточечном объекте
 			ParityCheck,	///< Контроль чётности
@@ -218,6 +223,7 @@ class Arinc
 			SignalEmission,	///< Описание ВЧ сигнала
 			Speed,			///< Скорость
 			SpeedLimit,		///< Ограничение скорости
+			SpeedUnit,		///< Единица измерения скорости 5.122
 			Stopway,		///< Концевая полоса торможения 5.79
 			Theta,			///< Тэта 5.24
 			Time,			///< Время
@@ -227,6 +233,8 @@ class Arinc
 			Transition,		///< Идентификатор перехода
 			Turn,			///< Направление разворота
 			TurnDirectionValid,	///< Необходимость разворота в заданном направлении 5.22
+			UirLimitUpper,	///< Верхняя граница УИР - 5.121
+			UirLimitLower,	///< Нижняя граница УИР - 5.121
 			WaypointDescription,	///< Код описания ППМ
 			WaypointFormat,	///< Индикатор формата имени (Name format indicator)
 			WaypointType,	///< Тип ППМ
