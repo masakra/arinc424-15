@@ -32,6 +32,8 @@
 #ifndef ARINC_H
 #define ARINC_H
 
+#define ARINC_CYCLE_KEY "cycle"
+
 class ArincObjectInterface;
 
 class Arinc
@@ -96,14 +98,14 @@ class Arinc
 
 		enum Type {
 			NoType = 0,			///< Нет типа
-			VolumeHeader,
+			VolumeHeader,		///< Головная метка тома
 			Header1,
 			Header2,
 			EndOfFile,
 			EndOfVolume,
 			Standard,		// Standard точечный объект
 			Way,			// Standard объект-путь
-			Tailored		// должна быть последней \sa ArincLineMap::m_maps
+			Tailored
 		};
 
 		enum Field {
