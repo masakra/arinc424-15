@@ -101,23 +101,26 @@ ArincLine::type( const std::string & str ) // static
 			return Arinc::Tailored;
 
 		default: {
-			printf("%s\n", str.c_str() );
-			const std::string type = str.substr( 0, 3 );
+			// 3
+			std::string type = str.substr( 0, 3 );
 
 			if ( type == "VOL" )
 				return Arinc::VolumeHeader;
-
-			else if ( type == "HDR1" )
-				return Arinc::Header1;
-
-			else if ( type == "HDR2" )
-				return Arinc::Header2;
 
 			else if ( type == "EOF" )
 				return Arinc::EndOfFile;
 
 			else if ( type == "EOV" )
 				return Arinc::EndOfVolume;
+
+			// 4
+			type = str.substr( 0, 4 );
+
+			if ( type == "HDR1" )
+				return Arinc::Header1;
+
+			else if ( type == "HDR2" )
+				return Arinc::Header2;
 
 			else
 				return Arinc::NoType;

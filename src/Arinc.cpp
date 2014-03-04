@@ -26,6 +26,8 @@
 
 #include "Arinc.h"
 
+#include <stdio.h>
+#include <string.h>
 
 const char *
 Arinc::subsectionName( Subsection ss ) // static
@@ -253,9 +255,27 @@ Arinc::fieldName( Field field )
 		"wptype",			// WaypointType
 		"wpusage",			// WaypointUsage
 		"width",			// Width - ширина
-		"zone"				// Zone
+		"zone",				// Zone
+
+		"labelnumber",		// LabelNumber
+		"volumenumber",		// VolumeNumber
+		"arincbegin",		// ArincBegin
+		"arincend"			// ArincEnd
 	};
 
 	return names[ field ];
+}
+
+Arinc::Subsection
+Arinc::subsection( const char * abbr )	// static
+{
+	char buf[ SUBSECTION_ABBR_BUF_SIZE ];
+	snprintf( buf, SUBSECTION_ABBR_BUF_SIZE, "%-2.2s", abbr );
+
+	for ( Arinc::Subsection i = Arinc::AS; i <= Arinc::EO; ++i )
+		if ( strncmp( subsectionAbbr( i ), buf, SUBSECTION_ABBR_BUF_SIZE ) == 0 )
+			return i;
+
+	return Arinc::Unknown;
 }
 

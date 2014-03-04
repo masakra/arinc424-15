@@ -32,7 +32,7 @@
 #ifndef ARINC_H
 #define ARINC_H
 
-#define ARINC_CYCLE_KEY "cycle"
+#define SUBSECTION_ABBR_BUF_SIZE 4
 
 class ArincObjectInterface;
 
@@ -250,7 +250,8 @@ class Arinc
 			// Volume Header
 			LabelNumber,
 			VolumeNumber,
-			DataFrom,
+			ArincBegin,
+			ArincEnd,
 			Tracks,
 			Density
 		};
@@ -264,6 +265,8 @@ class Arinc
 		static const char * subsectionAbbr( Subsection ss );
 
 		static const char * fieldName( Field field );
+
+		static Arinc::Subsection subsection( const char * abbr );
 };
 
 #endif

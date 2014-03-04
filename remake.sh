@@ -19,7 +19,6 @@ else
 fi
 
 DEFINES="VERSION=\\\\\\\"${VERSION}\\\\\\\""	# aaaaaaaaaaaaaaaaa fuck !!
-#INCLUDEPATH="../geo"
 
 ${GMAKE} distclean
 

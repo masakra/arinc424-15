@@ -374,14 +374,6 @@ ArincLineMaps::ArincLineMaps()
 	m_map[ Arinc::UF ][ Arinc::UirLimitUpper ].span( 90, 5, Arinc::Way );
 	m_map[ Arinc::UF ][ Arinc::CruisingTable ].span( 95, 2, Arinc::Way );
 	m_map[ Arinc::UF ][ Arinc::Name ].span( 98, 25, Arinc::Way );
-
-	/*
-	// Volume Header
-	m_map[ Arinc::VolumeHeader ][ Arinc::LabelNumber ].span( 3 );
-	m_map[ Arinc::VolumeHeader ][ Arinc::VolumeNumber ].span( 4, 6 );
-	m_map[ Arinc::VolumeHeader ][ Arinc::DataFrom ].span( 37, 14 );
-	m_map[ Arinc::VolumeHeader ][ Arinc::Tracks ].span( 51, 2 );
-	*/
 }
 
 ArincLineMap &
